@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+<head>
+  <meta charset="utf-8" />
+  <title>AngularJS BootStrap UI radios</title>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.js"></script>
+  <script src="app.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  
+  <script>
+  var app = angular.module('plunker', ['ui.bootstrap']);
+
+  app.controller('MainCtrl', function($scope) {
+    
+    var services = [ 
+      { name:'Service A' },
+      { name:'Service B' },
+      { name:'Service C' },
+      { name:'Service D' }
+    ];
+    
+    $scope.availability = { services:services };
+    $scope.model = {};
+    
+    // Here we are using the service object instance as the "selection value". 
+    // Depending on what you need, you could also use some sort of identifier or 
+    // even the $index if that's more useful.
+    
+    // Immediately select the second one.
+    $scope.model.selectedService = services[1];
+    
+  });
+
+
+  </script>
+</head>
+
+<body ng-controller="MainCtrl">
+  <div class="btn-group-justified">
+    <label ng-repeat="service in availability.services" class="btn btn-primary" ng-model="model.selectedService" btn-radio="service">{{service.name}}</label>
+  </div>
+  <div>Current Selection is: {{model.selectedService.name}}</div>
+</body>
+
+</html>

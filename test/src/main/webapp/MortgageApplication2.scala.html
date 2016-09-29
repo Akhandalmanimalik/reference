@@ -1,0 +1,354 @@
+@(message: String)
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Realtor Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="@routes.Assets.at("_resources/favicon.ico")">
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js
+"></script>
+<!--  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+ -->   <script src="@routes.Assets.at("_resources/jquery-2.1.4.min.js")"></script>
+    <script src="@routes.Assets.at("_resources/jquery.geocomplete.js")"></script>
+    
+    <script>
+      $(function(){
+        $("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });
+      });
+    </script>
+     <script>
+      $(function(){
+        $("#geocomplete1").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete1").trigger("geocode");
+        });
+      });
+   
+    </script>
+    
+   
+
+<!-- <script src="_resources/jquery.maskedinput.min.js" type="text/javascript"></script>
+ -->  <link rel="stylesheet" href="_resources/bootstrap.min.css">
+ <link rel="stylesheet" href="@routes.Assets.at("_resources/bootstrap.min.css")">
+<script src=@routes.Assets.at("_resources/bootstrap.min.js")"></script>  
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/background.css")">
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/forms.css")">
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/template.css")">
+<style type="text/css">
+h2.form-header {
+line-height: 1.618em;
+font-size: 1.714em;
+}
+
+</style>
+</head>
+<body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<form name="myForm" action="referal1" method="POST" onsubmit="return validateForm()" onchange="return FormValidation();>
+<div class="row"></div>
+<div class="row">
+<div class="col-sm-3"></div>
+	<div class="col-sm-7 container-bg text-color-blue">
+		<div align="left" style="padding-bottom: 20px; margin-top: 30px; padding-left:3%" >
+		<img alt="Visdom Logo" height="65" width="210"
+			src="@routes.Assets.at("_resources/visdom-logo.png")"/>
+        </div>
+    <div style="padding-top: 50px"></div>
+	<div data-ng-app="demoApp"  style="margin-left: 5%" ng-init="firstYear=0;firstMonth=0;secYear=0;secMonths=0;thirdYear;thirdMonths=0;fourthYear=0;fourthMonths=0;totalMonths=0;data=36;">
+				
+	<div class="map_canvas"></div>
+	<div class="form-group" style="width: 60%">
+		<label for="pwd"><Strong> What is your current address? </Strong><span
+			style="color: red; font-size: 3">*</span> </label> <input
+				id="geocomplete" type="text" name="formatted_address" 
+					class="form-control" placeholder="Enter Location"  ng-required>
+			<div id="formatted_address11111s"> </div>
+									
+	</div>
+        <label class="form-label form-label-top" id="label_83" for="input_83">
+          How long have you lived at your current address?
+          <span	style="color: red; font-size: 5" >*</span>
+        </label>
+
+		<div>
+			<div class="form-group" style="width: 30%; float: left;" >
+				<input type="number"  placeholder="Years" ng-model="firstYear" id="input_1111"
+					class="form-control" name="fYear" data-type="input-number" value="" >
+					<div id="input_801"></div>
+			</div>
+			<div class="form-group" style="width: 30%; float: right;">
+				<input type="number" placeholder="Months" ng-model="firstMonth" 
+					class="form-control" id="input_1112" name="fMonth" data-type="input-number" value="">
+					<div id="input_802"></div>
+			</div>					
+				<input type="hidden" name="test"  value="{{firstYear*12+firstMonth}}">
+        </div>
+        					
+		<div ng-if="firstYear*12+firstMonth < 36">
+			<div class="map_canvas"></div>
+			<div class="form-group" style="width: 60%">
+				<label for="pwd"><Strong> What was your prior address? (Lenders Require A Minimum Of 3 Years Of Address History) </Strong><span
+					style="color: red; font-size: 3">*</span> </label> <input
+						id="geocomplete2" type="text" name="formatted_address2"
+							class="form-control" placeholder="Enter Location"  ng-required>
+				<div id="formatted_address11111"> </div>
+			</div>
+			<label>How long did you live at that address?<span style="color: red; font-size: 3">*</span></label>
+			<div>
+				<div class="form-group" style="width: 30%; float: left;" >
+				<input type="number" placeholder="Years" ng-model="secYear" 
+					class="form-control" id="input_1113" name="sYear" data-type="input-number" value="">
+					<div id="input_803"></div>
+				</div>
+				<div class="form-group" style="width: 30%; float: right;">
+				<input type="number" placeholder="Months" ng-model="secMonths" 
+					class="form-control"  id="input_1114" name="sMonth" data-type="input-number" value="">
+					<div id="input_804"></div>
+				</div>					
+       	 	</div>
+       	 	{{data}}
+        <div ng-if="firstYear*12+secYear*12+firstMonth+secMonths < 36">
+	
+		<!-- <input type="text" name="test2"  value="{{firstYear*12+secYear*12+firstMonth+secMonths}}"> -->
+		<label>How long did you live at this prior address?<span style="color: red; font-size: 3">*</span></label>
+			<div>
+				<div class="form-group" style="width: 30%; float: left;" >
+				<input type="number" placeholder="Years" ng-model="thirdYear" 
+					class="form-control" id="input_1115" name="tYear" data-type="input-number" value="">
+					<div id="input_805"></div>
+				</div>
+				<div class="form-group" style="width: 30%; float: right;">
+				<input type="number" placeholder="Months" ng-model="thirdMonths" 
+					class="form-control" id="input_1116" name="tMonth" data-type="input-number" value="">
+					<div id="input_806"></div>
+				</div>					
+       	   </div>
+       <div ng-if="firstYear*12+secYear*12+thirdYear*12+firstMonth+secMonths+thirdMonths < 36">
+       		<!-- <input type="text" name="test2"  value="{{firstYear*12+secYear*12+thirdYear*12+firstMonth+secMonths+thirdMonths}}"> -->
+       		<label>How long did you live at this prior address?<span style="color: red; font-size: 3">*</span></label>
+       		<div>
+				<div class="form-group" style="width: 30%; float: left;" >
+				<input type="number" placeholder="Years" ng-model="fourthYear" 
+					class="form-control" id="input_1117" name="foYear" data-type="input-number" value="">
+					<div id="input_807"></div>
+				</div>
+				<div class="form-group" style="width: 30%; float: right;">
+				<input type="number" placeholder="Months" ng-model="fourthMonths" 
+					class="form-control" id="input_1118" name="foMonth" data-type="input-number" value="">
+					<div id="input_808"></div>
+				</div>					
+       	  </div>
+       </div>
+		</div>
+	</div>
+</div>
+		
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="cid_95" class="form-input-wide">
+          <div style="text-align:center" class="form-buttons-wrapper">
+            <button id="input_95" type="submit" class="btn btn-primary">
+              Next
+            </button>
+          </div>
+        </div>
+      <br>
+      <br>
+        <div id="cid_101" class="form-input-wide">
+          <div id="text_101" class="form-html">
+            <p style="text-align:center;">30% Complete</p>
+          </div>
+        </div>
+      <br>
+      <br>
+        <div id="cid_100" class=" jf-required">
+          <div style="width:100%; text-align:Left;">
+            <div style="width:1px;height: 1px;">
+              <script type="text/javascript" src="http://widgets.jotform.io/mobileResponsive/mobile.responsive.js"></script>
+            </div>
+          </div>
+        </div>
+      <li style="display:none">
+        Should be Empty:
+        <input type="text" name="website" value="" />
+      </li>
+    </ul>
+				
+				
+				
+				
+							<div class="col-sm-3"></div>
+						</div>
+					</div>
+				</div>
+	</form>
+	
+<script type="text/javascript">
+	$(function() {
+		$.mask.definitions['~'] = "[+-]";
+
+		$("#phonedatata").mask("99");
+	});
+</script>
+
+ <script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+ 
+    <script src="jquery.geocomplete.js"></script>
+    <script>
+      $(function(){
+        $("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });
+      });
+    </script>
+    
+     <script>
+      $(function(){
+        $("#geocomplete1").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete1").trigger("geocode");
+        });
+      });
+    </script>
+    <script type="text/javascript">
+    var app = angular.module("demoApp", ['ui.bootstrap']);
+
+    app.controller('DemoController', function ($scope) {
+        init();
+        function init() {
+            $scope.newItemType = '';
+            $scope.company="";
+            $scope.change = function () {
+                console.log($scope.newItemType)
+            };
+        }
+    });
+    </script>
+    
+    <script type="text/javascript">
+ function validateForm() {
+	 
+	 var fYear=document.forms["myForm"]["fYear"].value;
+	var retVal = true;
+	 var fy=document.getElementById('input_801').value;
+	 if(!fYear){
+		 	
+	        document.getElementById('input_1111').style.borderColor = "red";
+	        document.getElementById('input_801').innerHTML="<span style='color:red'>*This field is Required.</span>";
+	        retVal = false;
+	        alert("first year"+retVal);
+	    }
+	    
+	    var fMonth=document.forms["myForm"]["fMonth"].value;
+		 var fm=document.getElementById('input_802').value;
+		 
+		    if(!fMonth){
+		    	
+		        document.getElementById('input_1112').style.borderColor = "red";
+		        document.getElementById('input_802').innerHTML="<span style='color:red'>*This field is Required.</span>";
+		        					retVal = false;
+		        				alert("first month"+retVal);
+		    					}
+		    					var sYear=document.forms["myForm"]["sYear"].value;
+								var sy=document.getElementById('input_803').value;
+						    	if(!sYear){
+					        	document.getElementById('input_1113').style.borderColor = "red";
+			        			document.getElementById('input_803').innerHTML="<span style='color:red'>*This field is Required.</span>";
+			        			retVal = false;
+			        			alert("sec year"+retVal);
+			 					}
+							    var sMonth=document.forms["myForm"]["sMonth"].value;
+							    var sm=document.getElementById('input_804').value;
+							    if(!sMonth == ""){
+				        		document.getElementById('input_1114').style.borderColor = "red";
+				        		document.getElementById('input_804').innerHTML="<span style='color:red'>*This field is Required.</span>";
+				        		retVal = false;
+				        		alert("sec month"+retVal);
+								}
+				
+							    var tYear=document.forms["myForm"]["tYear"].value;
+								var ty=document.getElementById('input_805').value;
+					 
+							    if(!tYear == ""){
+					        	document.getElementById('input_1115').style.borderColor = "red";
+					        	document.getElementById('input_805').innerHTML="<span style='color:red'>*This field is Required.</span>";
+					        	retVal = false;
+					        	alert("third year"+retVal);
+					 			}
+							    var tMonth=document.forms["myForm"]["tMonth"].value;
+								var tm=document.getElementById('input_806').value;
+						    	if(tMonth == ""){
+						        document.getElementById('input_1116').style.borderColor = "red";
+						        document.getElementById('input_806').innerHTML="<span style='color:red'>*This field is Required.</span>";
+						        retVal = false;
+						        alert("third month"+retVal);
+								}
+						    	var foYear=document.forms["myForm"]["foYear"].value;
+							 	var foy=document.getElementById('input_807').value;
+							    if(foYear == ""){
+							        document.getElementById('input_1117').style.borderColor = "red";
+							        document.getElementById('input_807').innerHTML="<span style='color:red'>*This field is Required.</span>";
+							        retVal = false;
+							        alert("fourth year"+retVal);
+							 	}
+							    var foMonth=document.forms["myForm"]["foMonth"].value;
+								 var fom=document.getElementById('input_808').value;
+								    if(foMonth==""){
+								        document.getElementById('input_1118').style.borderColor = "red";
+								        document.getElementById('input_808').innerHTML="<span style='color:red'>*This field is Required.</span>";
+								        retVal = false;
+								        alert("four month"+retVal);
+								        
+								}
+							    alert(retVal);
+	    						return retVal; 
+     }
+    </script>
+  
+
+<script src="@routes.Assets.at("_resources/jquery.maskedinput.min.js")" type="text/javascript"></script>
+</body>
+</html>

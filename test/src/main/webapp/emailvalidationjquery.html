@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Makes "field" required and an email address.</title>
+
+ 
+</head>
+<body>
+<form id="myForm">
+<input id="field" name="field">
+<br/>
+</form>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+<script>
+// just for the demos, avoids form submit
+jQuery.validator.setDefaults({
+  debug: true,
+  success: "valid"
+});
+$( "#myForm" ).validate({
+	  rules: {
+	    field: {
+	      required: true,
+	      email: true
+	    }
+	  }
+	});
+</script>
+</body>
+</html>

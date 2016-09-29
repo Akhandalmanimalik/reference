@@ -1,0 +1,356 @@
+@(uniid: String)
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta https-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Mortgage Application</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="shortcut icon" href="@routes.Assets.at("_resources/favicon.ico")">
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js
+"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+ -->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+ 
+   <script src="@routes.Assets.at("_resources/jquery-2.1.4.min.js")"></script>
+    <script src="@routes.Assets.at("_resources/jquery.geocomplete.js")"></script>
+    <script type="text/javascript">
+		function validateForm() {
+			var buildingType = document.forms["myForm"]["buildingType"].value;
+			if (buildingType == "select1") {
+				document.getElementById('widget_settings_44').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+
+				return false;
+			} else {
+				document.getElementById("widget_settings_44").innerHTML = "";
+			}		
+			
+			var propertyStyle = document.forms["myForm"]["propertyStyle"].value;
+			if (propertyStyle == "select2") {
+				document.getElementById('widget_settings_65').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+
+				return false;
+			} else {
+				document.getElementById("widget_settings_65").innerHTML = "";
+			}
+			
+			var squareFt = document.forms["myForm"]["squareFt"].value;
+			if (!squareFt) {
+				document.getElementById('input_24').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+					return false;
+			} else {
+				document.getElementById("input_24").innerHTML = "";
+			}
+			
+			var propertyHeat = document.forms["myForm"]["propertyHeat"].value;
+			if (propertyHeat == "propHeat") {
+				document.getElementById('widget_settings_58').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+				return false;
+			} else {
+				document.getElementById("widget_settings_58").innerHTML = "";
+			}
+			
+			var propertyGetWater = document.forms["myForm"]["propertyGetWater"].value;
+			if (propertyGetWater == "propGetWater") {
+				document.getElementById('widget_settings_59').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+				return false;
+			} else {
+				document.getElementById("widget_settings_59").innerHTML = "";
+			}
+			
+			var propertyDisposeWater = document.forms["myForm"]["propertyDisposeWater"].value;
+			if (propertyDisposeWater == "propDispWater") {
+				document.getElementById('widget_settings_60').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+				return false;
+			} else {
+				document.getElementById("widget_settings_60").innerHTML = "";
+			}
+			
+			var typeGarage = document.forms["myForm"]["typeGarage"].value;
+			if (typeGarage == "typeGarages") {
+				document.getElementById('widget_settings_61').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+
+				return false;
+			} else {
+				document.getElementById("widget_settings_61").innerHTML = "";
+			}
+			
+			var garageSize = document.forms["myForm"]["garageSize"].value;
+			if (garageSize == "garageSizes") {
+				document.getElementById('widget_settings_64').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+
+				return false;
+			} else {
+				document.getElementById("widget_settings_64").innerHTML = "";
+			}
+			
+			return true;
+		}
+		</script>
+    <script>
+    
+      $(function(){
+        $("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });
+      });
+    </script>
+     <script>
+      $(function(){
+        $("#geocomplete1").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete1").trigger("geocode");
+        });
+      });
+      
+    </script>
+<!-- <script src="_resources/jquery.maskedinput.min.js" type="text/javascript"></script>
+ -->  
+ <link rel="stylesheet" href="_resources/bootstrap.min.css">
+ <link rel="stylesheet" href="@routes.Assets.at("_resources/bootstrap.min.css")">
+<script src=@routes.Assets.at("_resources/bootstrap.min.js")"></script>  
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/background.css")">
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/forms.css")">
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/template.css")">
+<style type="text/css">
+  .inline {
+  	display: inline;
+	}
+</style>
+</head>
+<body>
+<br>
+<br>
+
+
+
+<div style="width:97%">
+		<form name="myForm" action="mortgageForm6" method="POST" onsubmit="return validateForm()">
+		<input type="hidden" value="@uniid" name="uniid">
+		<div class="row"></div>
+		<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-7 container-bg text-color-blue">
+			
+		<div align="left" style="padding-bottom: 1px; margin-top: 20px; padding-left: 3%">
+			<img alt="Visdom Logo" height="65" width="210"
+				src="@routes.Assets.at("_resources/visdom-logo.png")" />
+		</div>
+		<div style="padding-top: 30px"></div>
+		
+		<div data-ng-app="demoApp"  style="margin-left: 5%;">
+		<div ng-controller="DemoController" ng-init="isDisabled = false">
+					<div class="container" style="width: 100%; position: relative;">	
+					 <div class="row">
+					 <div class="col-sm-6"><label class="labelfont">What Type of Building is your Property?<span
+									style="color: red; font-size: 3">*</span></label><br>
+					 						<select class="form-control" style="width: 100%;" value="" name="buildingType">
+											<option value="select1">Select Property Type</option>
+						  					<option value="house">House</option>
+						  					<option value="duplex">Duplex</option>
+						  					<option value="apartmentCondo">Apartment Condo</option>
+						  					<option value="townHouse">Townhouse</option>
+						  					<option value="rowHouse">Rowhouse</option>
+						  					<option value="mobileHome">Mobile Home </option>
+						  					<option value="modularHome">Modular Home</option>
+						  					<option value="other">Others</option>
+						  					<option value="notSure">Not Sure</option>
+											</select>
+					 </div>
+					 <div class="col-sm-6"><label class="labelfont">What is the Style of your Property?<span
+									style="color: red; font-size: 3">*</span></label><br>
+					 					   <select style="width: 100%;" class="form-control" value="" name="propertyStyle">
+											<option value="select2">Select Property Style</option>
+						  					<option value="bungalow">Bungalow</option>
+						  					<option value="oneStory">One Story</option>
+						  					<option value="biLevel">BiLevel</option>
+						  					<option value="twoStory">Two Story</option>
+						  					<option value="splitLevel">Split Level</option>
+						  					<option value="storyAndAHalf">Story and A Half</option>
+						  					<option value="threeStory">Three Story</option>
+						  					<option value="other2">Other</option>
+						  					<option value="notSure2">Not Sure</option>
+											</select>
+					 </div>
+					 </div>
+					 <br>
+					  <div class="row">
+					  <div class="col-sm-6"><label class="labelfont"> What is the square footage of the property?<span
+									style="color: red; font-size: 3">*</span></label><br>
+					  	<input type="number" class="form-control" placeholder="e.g 2300" style="width: 100%;" name="squareFt" value=""
+								 data-type="input-number">					
+					  </div>
+					  <div class="col-sm-6"><label class="labelfont">What is the MAIN way your property is heated?<span
+									style="color: red; font-size: 3">*</span></label><br>
+					  						<select class="form-control" style="width: 100%;" value="" name="propertyHeat">
+											<option value="propHeat">Select closest option</option>
+						  					<option value="furnace">Furnace</option>
+						  					<option value="electric">Electric</option>
+						  					<option value="hotWater"> Hot Water </option>
+						  					<option value="inFloor">In floor</option>
+						  					<option value="other3">Other</option>
+											</select>
+					  </div>
+					  </div>
+						<br>
+					  <div class="row">
+					  <div class="col-sm-6"><label class="labelfont"> Where does your property get water?<span
+									style="color: red; font-size: 3">*</span></label><br>
+					  						<select class="form-control" style="width: 100%;" value="" name="propertyGetWater">
+											<option value="propGetWater">Select closest option</option>
+						  					<option value="municipal">Municipal</option>
+						  					<option value="privateWell">Private Well</option>
+						  					<option value="sharedWell">Shared Well</option>
+						  					<option value="cistern">Cistern</option>
+						  					<option value="other4">Other</option>
+						  					<option value="notSure4">Not Sure</option>
+											</select>
+					  </div>
+					  <div class="col-sm-6"><label class="labelfont">How is wastewater and sewage disposed?<span
+									style="color: red; font-size: 3">*</span></label><br>
+					  						<select class="form-control" style="width: 100%;" value="" name="propertyDisposeWater">
+											<option value="propDispWater">Select closest option</option>
+						  					<option value="municipality">Municipality</option>
+						  					<option value="septicSystem">Septic System</option>
+						  					<option value="holdingTank">Holding Tank</option>
+						  					<option value="other5">Others</option>
+						  					<option value="notSure5">Not Sure</option>
+											</select>
+					  </div>
+					  </div>
+					  <br>	
+					  <div class="row">
+					  <div class="col-sm-6"><label class="labelfont"> What type of garage is with the property?<span
+									style="color: red; font-size: 3">*</span></label><br>
+					  						<select class="form-control" style="width: 100%;" value="" name="typeGarage">
+											<option value="typeGarages">Select closest option</option>
+						  					<option value="attached">Attached</option>
+						  					<option value="Detached">Detached</option>
+						  					<option value="None6">None</option>
+										    </select>
+					  </div>
+					  <div class="col-sm-6"><label class="labelfont">What size is the garage?<span
+									style="color: red; font-size: 3">*</span></label><br>
+					  						<select class="form-control" style="width: 100%;" value="" name="garageSize" >
+											<option value="garageSizes">Select closest option</option>
+						  					<option value="single">Single</option>
+						  					<option value="double">Double</option>
+						  					<option value="triple">Triple</option>
+											</select>
+					  </div>
+					  </div>
+				</div>	  
+			</div>
+	        <br>
+	        		     
+	        		<div class="row" style="width: 100%;">
+					  <div class="col-sm-6" style="float: left; padding-left:5%; width: 50%;">
+					  		<input type="button" class="btn btn-primary btn-block"
+								value="Back" style=" width: 50%;">
+					  </div>
+					  <div class="col-sm-6" align="right" style="float: right; padding-right:5%; width: 50%;"><input type="submit" class="btn btn-primary btn-block"
+								value="Next" style="width: 50%;">
+							<div align="right" id="submiterror">
+								<font color="red"></font></div>
+					  </div>	
+					</div>
+				</div>
+						<br>
+						<div class="container" style="width: 70%;">
+						  <div class="progress">
+						    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:15%">
+						    <label>15%</label>
+						    </div>
+						  </div>
+						</div>
+					 </div>
+					<div class="col-sm-3"></div>
+				</div>
+				</div>
+				<br>
+				
+				
+</form>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        $.mask.definitions['~'] = "[+-]";
+
+        $("#phonedatata").mask("999-999-9999");
+    });
+	
+</script>
+
+ <script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+ 
+    <script src="jquery.geocomplete.js"></script>
+    <script>
+      $(function(){
+        $("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });
+      });
+    </script>
+    
+     <script>
+      $(function(){
+        $("#geocomplete1").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete1").trigger("geocode");
+        });
+      });
+    </script>
+    <script type="text/javascript">
+    var app = angular.module("demoApp", ['ui.bootstrap']);
+
+    app.controller('DemoController', function ($scope) {
+        init();
+        function init() {
+            $scope.newItemType = '';
+            $scope.company="";
+            $scope.change = function () {
+                console.log($scope.newItemType)
+            };
+        }
+    });
+    </script>
+<script src="@routes.Assets.at("_resources/jquery.maskedinput.min.js")" type="text/javascript"></script>
+</body>
+</html>

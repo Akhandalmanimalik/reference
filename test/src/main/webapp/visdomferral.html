@@ -1,0 +1,736 @@
+@(message: String)
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Referral Source Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="@routes.Assets.at("_resources/favicon.ico")">
+<script
+	src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+<script src="@routes.Assets.at("_resources/angular.min.js")"></script>
+
+<script src="@routes.Assets.at("_resources/ui-bootstrap-tpls.min.js")"></script>
+<!--  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+ -->
+ 
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
+ <script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+
+});
+</script>
+
+<script src="@routes.Assets.at("_resources/jquery-2.1.4.min.js")"></script>
+<script src="@routes.Assets.at("_resources/jquery.geocomplete.js")"></script>
+<style type="text/css">
+
+	.tooltip-inner {
+	color:black;
+	background-color: #9edfeb;
+	}
+
+.blocks .btn-primary {
+	font-weight: bold;
+	padding: 9px 6px;
+	margin: 2px 2px;
+	border-radius: 0;
+	background-color: #0086b3;
+	
+}
+
+.btn {
+	border: 0 none;
+	font-weight: bold;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+.btn-primary:active,.btn-primary.active {
+	background: #0099cc;
+	color: #ffffff;
+	box-shadow: none;
+}
+  
+</style>
+<script>
+      $(function(){
+        $("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });
+      });
+    </script>
+
+<script>
+      $(function(){
+        $("#geocomplete1").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete1").trigger("geocode");
+        });
+      });
+    </script>
+<script type="text/javascript">
+  /*   $.get("https://ipinfo.io", function (response) {
+    	document.getElementById("ip").value=JSON.stringify(response, null, 4);
+    	alert(JSON.stringify(response, null, 4));
+    		/* $("#ip").html("IP: " + response.ip);
+        $("#address").html("Location: " + response.city + ", " + response.region); */
+       // $("#details").html(JSON.stringify(response, null, 4));
+    }, "jsonp"); */
+    </script>
+
+<script type="text/javascript">
+    
+    jQuery.ajax( { 
+    	  url: '//freegeoip.net/json/', 
+    	  type: 'POST', 
+    	  dataType: 'jsonp',
+    	  success: function(location) {
+    	    // example where I update content on the page.
+    	    
+    	        	document.getElementById("ip").value=JSON.stringify(location, null, 4);
+    	    //alert(JSON.stringify(location, null, 4));
+/* 
+    	    jQuery('#city').html(location.city);
+    	    jQuery('#region-code').html(location.region_code);
+    	    jQuery('#region-name').html(location.region_name);
+    	    jQuery('#areacode').html(location.areacode);
+    	    jQuery('#ip').html(location.ip);
+    	    jQuery('#zipcode').html(location.zipcode);
+    	    jQuery('#longitude').html(location.longitude);
+    	    jQuery('#latitude').html(location.latitude);
+    	    jQuery('#country-name').html(location.country_name);
+    	    jQuery('#country-code').html(location.country_code); */
+    	  }
+    	} );
+    </script>
+
+<!-- <script src="_resources/jquery.maskedinput.min.js" type="text/javascript"></script>
+ -->
+<link rel="stylesheet" href="_resources/bootstrap.min.css">
+<link rel="stylesheet" href="@routes.Assets.at("_resources/bootstrap.min.css")">
+<script src=@routes.Assets.at("_resources/bootstrap.min.js")"></script>
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/background.css")">
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/forms.css")">
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/template.css")">
+</head>
+<body>
+
+
+	<div style="padding-bottom: 20px; margin-top: 20px; padding-left: 45%">
+		<img alt="Visdom Logo" height="90" width="260"
+			src="@routes.Assets.at("_resources/visdom-logo.png")" />
+
+
+	</div>
+
+	<form name="myForm" action="referal1" method="POST"
+		onsubmit="return validateForm()">
+		<div style="width: 90%">
+			<div class="row"></div>
+			<div class="row">
+				<div class="col-sm-3"></div>
+
+
+				<div class="col-sm-7 container-bg text-color-blue">
+					<div style="padding-top: 50px"></div>
+					<div data-ng-app="demoApp" style="margin-left: 5%">
+
+						<div>
+							<center>
+								<h4>Welcome to the Visdom Mortgage Solutions referral
+									program.</h4>
+							</center>
+						</div>
+						<br>
+
+						<div ng-controller="DemoController">
+							<input type="hidden" name="ip" value="" id="ip">
+
+<div>
+								<input type="hidden" id="role" name="role"
+									value="{{newItemType}}" ng-required>
+							</div>
+							<div class="form-group" style="width: 60%">
+								<label for="usr"> <Strong>What best describes
+										your role? </Strong><span style="color: red; font-size: 3">*</span></label>
+
+							</div>
+							
+
+							<div class="btn-group blocks">
+								<label style="width: 180px; border-style: groove;"
+									class="btn btn-primary " btn-radio="'Realtor'"
+									ng-change="change()" ng-model="newItemType" data-toggle="tooltip" title="Choose “Realtor” if your primary business activity is selling real estate, you must hold a license in good standing as a associate, agent, sales representative, associate broker or broker through the appropriate provincial  licensing body."> Realtor </label> <label
+									style="width: 180px; border-style: groove;"
+									class="btn btn-primary full " btn-radio="'Financial Planner'"
+									ng-change="change()" ng-model="newItemType" data-title="Choose “Financial Planner” if your primary business activities include the sale of insurance, sale and/or management of investments, estate or financial planning. You should hold the appropriate licenses for the province in which you reside."> Financial
+									Planner </label><br> <label
+									style="width: 180px; border-style: groove;"
+									class="btn btn-primary " btn-radio="'Professional'"
+									ng-change="change()" ng-model="newItemType" data-title="Choose “Professional” if within your daily business you would come across opportunities to refer mortgage customers, Professions such as Lawyers, Accountants, Tax Advisors, Builders, Appraisers, Auctioneers, HR Personnel, or Bank Representative."> Professional
+
+								</label> <label style="width: 180px; border-style: groove;"
+									class="btn btn-primary " btn-radio="'Client'"
+									ng-change="change()" ng-model="newItemType" data-title="Choose “Client” if you don’t hold a real estate or insurance type licensure and are not in a professions whose regular daily responsibilities expose you to be involved with real estate, financing, or human resource activities. You are just a fan of Visdom and like to earn extra cash for referrals."> Client </label>
+
+								<div id="role1"></div>
+
+							</div>
+
+
+
+
+
+							<br>
+							<br> <br>
+
+
+							<div class="form-group" style="width: 60%">
+								<label for="usr"> <Strong>Your First Name </Strong><span
+									style="color: red; font-size: 3">*</span></label> <input type="text"
+									id="fname" name="fname" class="form-control" required>
+								<div id="fname1"></div>
+
+							</div>
+							<br>
+							<div class="form-group" style="width: 60%">
+								<label for="pwd"><Strong>Your Last Name</Strong> <span
+									style="color: red; font-size: 3">*</span> </label> <input type="text"
+									id="lname" name="lname" class="form-control" required>
+
+								<div id="lname1"></div>
+
+							</div>
+							<br>
+
+
+
+
+
+
+							<div class="form-group" style="width: 60%">
+								<label for="pwd"><Strong> E-mail Address</Strong><span
+									style="color: red; font-size: 3">*</span> </label> <input type="email"
+									id="email" name="email" class="form-control"
+									placeholder="Ex: myemail@@example.com" 				required>
+								<div id="email1"></div>
+
+
+							</div>
+
+							<div class="form-group" style="width: 60%">
+								<input type="email" id="email2" name="email2" class="form-control"
+									placeholder="Confirm Email" required>
+								<div id="error"></div>
+								<div id="email2"></div>
+
+							</div>
+							<br>
+
+							<div class="form-group" style="width: 40%"
+								title="This is the text of the tooltip">
+								<label><Strong>Phone Number </Strong> <span
+									style="color: red; font-size: 3">*</span> </label> <input type="text"
+									class="form-control" name="phone" id="phonedatata"
+										 required/>
+
+								<div id="phone1"></div>
+
+								<span>Please specify numeric values only </span>
+							</div>
+							<br>
+
+
+							<div
+								ng-show="newItemType == 'Financial Planner' || newItemType =='Professional' ">
+
+
+								<div class="form-group" style="width: 100%">
+									<label for="pwd"><Strong>In some regulated
+											occupations, referral compensation must be paid to the
+											company a person is licensed with rather than directly to
+											individuals (e.g. Real Estate Agent, Mortgage Broker). Should
+											referral compensation be paid directly to you or to the
+											company you work with? </Strong><span style="color: red; font-size: 3">*</span>
+									</label>
+								</div>
+
+
+
+
+
+								<div class="btn-group blocks" data-toggle="buttons">
+									<label style="width: 180px" class="btn btn-primary"
+										btn-radio="'Company'" ng-change="change()" ng-model="company">
+										Company </label> <label style="width: 180px" class="btn btn-primary"
+										btn-radio="'Direct To MySelf'" ng-change="change()"
+										ng-model="company"> Direct To MySelf </label>
+								</div>
+								<div id="feeTo1"></div>
+								<input type="hidden" id="feeTo" name="feeTo" value="{{company}}"> <br>
+								<br>
+
+
+								<div class="map_canvas"></div>
+
+								<div class="form-group" style="width: 60%">
+									<label for="pwd"><Strong> Company Name ? </Strong><span
+										style="color: red; font-size: 3">*</span> </label> <input type="text"
+									id="company"	name="company" class="form-control" >
+									<div id="company1"></div>
+
+								</div>
+
+								<div class="form-group" style="width: 60%">
+									<label for="pwd"><Strong> Company Address </Strong><span
+										style="color: red; font-size: 3">*</span> </label> <input
+										id="geocomplete" type="text" name="formatted_address"
+										class="form-control" ng-model="companyAddress"
+										placeholder="Enter Location" ng-required> <input
+										type="hidden" name="companyAddress" value="{{companyAddress}}">
+									<div id="formattedaddress1"></div>
+
+
+								</div>
+							</div>
+							<div ng-show="newItemType == 'Realtor'">
+
+								<div class="form-group" style="width: 70%">
+									<label for="pwd"><Strong> What is the name of
+											the Brokerage you are licensed under? </Strong><span
+										style="color: red; font-size: 3">*</span> </label> <input type="text"
+									id="broker"	name="broker" class="form-control" ng-required>
+									<div id="broker1"></div>
+
+								</div>
+								<div class="map_canvas"></div>
+								<div class="form-group" style="width: 60%; height: 30%">
+									<label for="pwd"><Strong> What is the address
+											of the Brokerage?</Strong> <span style="color: red; font-size: 3">*</span>
+									</label> <input id="geocomplete1" type="text"
+										ng-model="companyAddress1" name="formatted_address"
+										class="form-control" placeholder="Enter Location" ng-required>
+									<input type="hidden" name="companyAddress1"
+										value="{{companyAddress1}}">
+
+									<div id="address1"></div>
+
+								</div>
+								<div class="form-group" style="width: 60%">
+									<label for="pwd"><Strong> What is the phone
+											number of the Brokerage? </Strong> <span
+										style="color: red; font-size: 3">*</span> </label> <input type="text"
+										id="brokerPhone" name="brokerPhone" class="form-control"
+										ng-required>
+
+									<div id="brokerPhone1"></div>
+
+								</div>
+
+								<div class="form-group" style="width: 60%">
+									<label for="pwd"><Strong>Who is the Broker
+											that manages the company where you are licenced? </Strong> <span
+										style="color: red; font-size: 3">*</span> </label> <input type="text"
+									id="brokerMange"	name="brokerMange" class="form-control" ng-required>
+									<div id="brokerMange1"></div>
+
+								</div>
+							</div>
+							<div class="form-group" style="width: 100%">
+								<label for="pwd"><Strong>Who referred you to
+										Visdom? (Or how did you find Visdom in the event you were not
+										referred by a person) </Strong> <span style="color: red; font-size: 3">*</span>
+								</label> <input type="text" id="refer" name="refer" class="form-control" 
+								
+								data-toggle="tooltip" data-placement="right"
+									title="Please be as specific as possible, were you introduced by a person (including their name), a Visdom employee, our website, or the internet.  Thank you."
+								
+								
+								required>
+								<div id="refer1"></div>
+
+							</div>
+							<br>
+
+
+
+							<div align="left">
+
+								<input type="submit" class="btn btn-primary btn-block"
+									value="Next">
+
+								<div align="center" id="submiterror">
+									<font color="red"></font>
+								</div>
+
+							</div>
+
+
+
+
+							<div style="padding-bottom: 50px;"></div>
+						</div>
+						<div class="col-sm-3"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+
+
+	<script type="text/javascript">
+    $(function() {
+        $.mask.definitions['~'] = "[+-]";
+
+        $("#phonedatata").mask("999-999-9999");
+    });
+	
+</script>
+	<script type="text/javascript">
+    $(function() {
+        $.mask.definitions['~'] = "[+-]";
+
+        $("#brokerPhone").mask("999-999-9999");
+    });
+	
+</script>
+
+
+
+	<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+	<script
+		src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+
+	<script src="jquery.geocomplete.js"></script>
+	<script>
+      $(function(){
+        $("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });
+      });
+    </script>
+
+	<script>
+      $(function(){
+        $("#geocomplete1").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete1").trigger("geocode");
+        });
+      });
+    </script>
+	<script type="text/javascript">
+    var app = angular.module("demoApp", ['ui.bootstrap']);
+
+    app.controller('DemoController', function ($scope) {
+        init();
+        function init() {
+            $scope.newItemType = '';
+            $scope.company="";
+            $scope.change = function () {
+                console.log($scope.newItemType)
+            };
+        }
+    });
+    </script>
+
+	<script type="text/javascript">
+ function validateForm() {
+	 
+	 try{
+		var role=document.forms["myForm"]["role"].value;
+		
+		if(!role){
+			document.getElementById("role1").innerHTML="<p style=\"color:red\">Please Select Role</p>";
+			document.getElementById("role").focus();
+
+			document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+			return false;
+		}else{
+	    	document.getElementById("role1").innerHTML="";
+
+		} 
+
+	 var fname=document.forms["myForm"]["fname"].value;
+	 
+
+		if(!fname){
+			document.getElementById("fname").focus();
+
+			document.getElementById("fname1").innerHTML="<p style=\"color:red\">FirstName Required</p>";
+			document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+			return false;
+		}else{
+	    	document.getElementById("fname1").innerHTML="";
+
+		} 
+		var lname=document.forms["myForm"]["lname"].value;
+		 
+		if(!lname){
+			
+			document.getElementById("lname1").innerHTML="<p style=\"color:red\">LastName Required</p>";
+			document.getElementById("lname").focus();
+			document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+			return false;
+		}
+			else{
+		    	document.getElementById("lname1").innerHTML="";
+
+			} 
+		
+		
+	 
+		var email=document.forms["myForm"]["email"].value;
+		 
+		if(!email){
+			
+			document.getElementById("email1").innerHTML="<p style=\"color:red\">Email Required</p>";
+			document.getElementById("email").focus();
+
+			document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+			return false;
+		}else{
+	    	document.getElementById("email1").innerHTML="";
+
+		}
+	 
+	 
+    var x = document.forms["myForm"]["email"].value;
+    var x2 = document.forms["myForm"]["email2"].value;
+
+    var pattern=/^([a-zA-Z0-9_.-])+@@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
+    if(pattern.test(x)){         
+		  
+    }else{   
+		document.getElementById("email1").innerHTML="<p style=\"color:red\"> Proper Email Id Required</p>";
+		document.getElementById("email").focus();
+
+		document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+		return false;
+    }
+    
+    if(pattern.test(x2)){         
+		  
+    }else{   
+		document.getElementById("error").innerHTML="<p style=\"color:red\"> Proper Email Id Required</p>";
+		document.getElementById("email2").focus();
+
+		document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+		return false;
+    }
+    if (x  != x2) {
+document.getElementById("error").innerHTML="<p style=\"color:red\">Email have to match</p>";
+document.getElementById("email").focus();
+
+document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+    	return false;
+    }else{
+    	document.getElementById("error").innerHTML="";
+
+    }
+    
+	var phone=document.forms["myForm"]["phone"].value;
+	 
+	if(!phone){
+		document.getElementById("phone1").innerHTML="<p style=\"color:red\">PhoneNumber Required</p>";
+		document.getElementById("phonedatata").focus();
+
+		document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+		return false;
+	}	
+	else{
+    	document.getElementById("phone1").innerHTML="";
+
+	} 
+    
+	var feeTo=document.forms["myForm"]["feeTo"].value;
+
+	if(!feeTo){
+
+		if(role == 'Financial Planner' || role=='Professional'){
+		document.getElementById("feeTo1").innerHTML="<p style=\"color:red\">This Feild is Required</p>";
+		document.getElementById("feeTo").focus();
+
+		document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+		return false;
+	}
+	}else{
+    	document.getElementById("feeTo1").innerHTML="";
+
+	}
+	
+	
+	
+	
+	
+	//var role=document.forms["myForm"]["role"].value;
+	var company=document.forms["myForm"]["company"].value;
+
+	
+	
+if(!company){
+	if(role == 'Financial Planner' || role=='Professional'){
+		document.getElementById("company1").innerHTML="<p style=\"color:red\">This Feild is Required</p>";
+		document.getElementById("company").focus();
+
+		document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+		return false;
+	}
+	}else{
+    	document.getElementById("company1").innerHTML="";
+
+	}
+
+
+//var formattedaddress=document.forms["myForm"]["companyAddress"].value;
+var companyAddress=document.forms["myForm"]["companyAddress"].value;
+
+
+if(!companyAddress){
+	if(role == 'Financial Planner' || role=='Professional'){
+
+		document.getElementById("formattedaddress1").innerHTML="<p style=\"color:red\">This Feild is Required</p>";
+		document.getElementById("geocomplete").focus();
+
+		document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+		return false;
+	}
+	}else{
+    	document.getElementById("formattedaddress1").innerHTML="";
+
+	}
+	
+
+	
+	var broker=document.forms["myForm"]["broker"].value;
+
+if(!broker&& role== 'Realtor'){
+		
+		document.getElementById("broker1").innerHTML="<p style=\"color:red\">This Feild is Required</p>";
+		
+		document.getElementById("broker").focus();
+
+		document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+		return false;
+	}else{
+    	document.getElementById("broker1").innerHTML="";
+
+	}									
+var address1=document.forms["myForm"]["companyAddress1"].value;
+if(!address1&& role== 'Realtor'){
+	
+	document.getElementById("address1").innerHTML="<p style=\"color:red\">This Feild is Required</p>";
+	document.getElementById("geocomplete1").focus();
+
+	document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+	return false;
+}else{
+	document.getElementById("address1").innerHTML="";
+
+}
+
+var brokerPhone=document.forms["myForm"]["brokerPhone"].value;
+
+
+
+if(!brokerPhone&& role== 'Realtor'){
+	
+	document.getElementById("brokerPhone1").innerHTML="<p style=\"color:red\">This Feild is Required</p>";
+	document.getElementById("brokerPhone").focus();
+
+	document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+	return false;
+}else{
+	document.getElementById("brokerPhone1").innerHTML="";
+
+}
+
+var brokerMange=document.forms["myForm"]["brokerMange"].value;
+
+
+if(!brokerMange&& role== 'Realtor'){
+	
+	document.getElementById("brokerMange1").innerHTML="<p style=\"color:red\">This Feild is Required</p>";
+	document.getElementById("brokerMange").focus();
+
+	document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+	return false;
+}else{
+	document.getElementById("brokerMange1").innerHTML="";
+
+}
+
+
+var refer=document.forms["myForm"]["refer"].value;
+
+if(!refer&& role== 'Realtor'){
+	
+	document.getElementById("refer1").innerHTML="<p style=\"color:red\">This Feild is Required</p>";
+	document.getElementById("refer").focus();
+
+	document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+	return false;
+}else{
+	document.getElementById("refer1").innerHTML="";
+
+}
+	 }catch(err){
+		
+	 }
+    
+ }
+    
+    </script>
+
+
+	<script src="@routes.Assets.at("_resources/jquery.maskedinput.min.js")" type="text/javascript"></script>
+</body>
+</html>

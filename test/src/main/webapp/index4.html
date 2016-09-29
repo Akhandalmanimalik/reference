@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style type="text/css">
+*,*:after,*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.switch {
+  position: relative;
+}
+
+.switch input {
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  opacity: 0;
+  z-index: 100;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* DEMO 3 */
+
+.switch.demo3 {
+  width: 120px;
+  height: 30px;
+}
+
+.switch.demo3 label {
+  display: block;
+  width: 25%;
+  height: 60%;
+  background: pink;
+}
+
+.switch.demo3 label:after {
+  content: "";
+  position: absolute;
+  top: -8px; right: -8px; bottom: -8px; left: -8px;
+}
+
+.switch.demo3 label:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -18px; right: -18px; bottom: -18px; left: -18px;
+}
+
+
+.switch.demo3 input:checked ~ label i:before {
+ 
+	content: url(tick2.gif); 	 
+  color: #003366;
+}
+</style>
+
+<meta charset="UTF-8">
+</head>
+<body>
+<br><br>
+				<div class="row">
+					<div class="col-sm-5" style="float: left;">
+						<label>I agree to the terms and conditions<font color="red">*</font></label>
+					</div>
+	    			<div class="switch demo3  col-sm-4" style="float: left;">
+	                    <input type="checkbox">
+	                    <label><i></i></label>
+	                </div>
+                </div>
+</body>
+</html>
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
+<body>
+<div ng-app=" " ng-controller="nameController">
+First Name:<input type="text" ng-model="firstName">
+Last Name:<input type="text" ng-model="lastName">
+{{lastName}}
+{{firstName+"   "+lastName}}
+</div>
+<script>
+function nameController($scope){
+	$scope.firstName="Ram";
+	$scope.lastName="Jadu";
+}
+</script>
+</body>
+</html>

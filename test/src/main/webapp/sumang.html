@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  
+   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+   <script>
+var app = angular.module('demoApp', []);
+app.controller('validateCtrl', function($scope) {
+});
+</script>
+</head>
+<body>
+<div ng-app="demoApp">
+
+     <h3>Using Input Type Number</h3>
+	<div>
+    <p>First Number:
+        <input type="number" name="named" ng-model="c" />
+    </p>
+    <p>Second Number:
+        <input type="number" name ="dd" ng-model="d" />
+    </p>
+    <p>
+    Total number:
+        <input type="number" name="ccc" ng-value="c+d"/>
+        </div>
+    </p>
+   
+   {{c < d}}
+   <div ng-show="false" >
+    ng show false 
+   </div>
+   <div ng-show="c<d" >
+    ng show true
+   </div>
+</div>
+</body>
+</html>

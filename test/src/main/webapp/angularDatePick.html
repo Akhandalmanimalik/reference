@@ -1,0 +1,88 @@
+<!doctype html>
+<html ng-app="docsApp" ng-controller="DocsCtrl" lang="en" ng-strict-di>
+<head>
+<base href="/latest/">
+<title ng-bind="'Angular Material - ' + menu.currentSection.name +
+    (menu.currentSection === menu.currentPage ? '' : ' > ' + menu.currentPage.name)">
+  Angular Material
+</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<meta name="viewport" content="initial-scale=1" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+<link rel="stylesheet" href="angular-material.min.css">
+<link rel="stylesheet" href="docs.css">
+<script>
+
+
+angular.module('datepickerBasicUsage',
+    ['ngMaterial', 'ngMessages']).controller('AppCtrl', function($scope) {
+  $scope.myDate = new Date();
+  $scope.minDate = new Date(
+      $scope.myDate.getFullYear(),
+      $scope.myDate.getMonth() - 2,
+      $scope.myDate.getDate());
+  $scope.maxDate = new Date(
+      $scope.myDate.getFullYear(),
+      $scope.myDate.getMonth() + 2,
+      $scope.myDate.getDate());
+  $scope.onlyWeekendsPredicate = function(date) {
+    var day = date.getDay();
+    return day === 0 || day === 6;
+  }
+});
+
+
+</script>
+<style>
+
+
+.datepickerdemoBasicUsage {
+  /** Demo styles for mdCalendar. */ }
+  .datepickerdemoBasicUsage md-content {
+    padding-bottom: 200px; }
+  .datepickerdemoBasicUsage .validation-messages {
+    font-size: 11px;
+    color: darkred;
+    margin: 10px 0 0 25px; }
+
+
+</style>
+</head>
+<body layout="row" ng-cloak>
+
+
+<div ng-controller="AppCtrl" style='padding: 40px;' ng-cloak>
+  <md-content>
+    <h4>Standard date-picker</h4>
+    <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+    <h4>Disabled date-picker</h4>
+    <md-datepicker ng-model="myDate" md-placeholder="Enter date" disabled></md-datepicker>
+    <h4>Date-picker with min date and max date</h4>
+    <md-datepicker ng-model="myDate" md-placeholder="Enter date"
+        md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+    <h4>Only weekends are selectable</h4>
+    <md-datepicker ng-model="myDate" md-placeholder="Enter date"
+        md-date-filter="onlyWeekendsPredicate"></md-datepicker>
+    <h4>Only weekends within given range are selectable</h4>
+    <md-datepicker ng-model="myDate" md-placeholder="Enter date"
+        md-min-date="minDate" md-max-date="maxDate"
+        md-date-filter="onlyWeekendsPredicate"></md-datepicker>
+    <h4>With ngMessages</h4>
+    <form name="myForm">
+      <md-datepicker name="dateField" ng-model="myDate" md-placeholder="Enter date"
+          required md-min-date="minDate" md-max-date="maxDate"
+          md-date-filter="onlyWeekendsPredicate"></md-datepicker>
+      <div class="validation-messages" ng-messages="myForm.dateField.$error">
+        <div ng-message="valid">The entered value is not a date!</div>
+        <div ng-message="required">This date is required!</div>
+        <div ng-message="mindate">Date is too early!</div>
+        <div ng-message="maxdate">Date is too late!</div>
+        <div ng-message="filtered">Only weekends are allowed!</div>
+      </div>
+    </form>
+  </md-content>
+</div>
+
+
+</body>
+</html>

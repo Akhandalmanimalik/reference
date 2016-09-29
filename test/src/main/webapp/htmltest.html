@@ -1,0 +1,23 @@
+<div ng-show="Vehichle" class="form-input-wide">
+									<table class="form-table small-text" id="customFields" style="border-collapse: separate;  border-spacing: 0 10px;">
+										<tr>
+										
+										<td><input type="text" name="asset[]" id="asset"
+											placeholder="Vehicle" class="form-control" value="Vehicle" readonly="readonly"></td>
+										<td><input type="text" name="description[]"
+											placeholder="description" id="description" class="form-control"></td>
+										<td><input type="number" data-type="input-number" 
+											name="value[]" id="value" placeholder="e.g. 50,000" class="form-control"></td>
+										<td><select name="designation[]" class="form-control">
+												<option value="" selected>Please Select</option>
+												<option value="Individual">Applicant First Name</option>
+												<option value="Individual">Co-Applicant First Name</option>
+												<option value="Joint">Joint</option>
+										</select>
+										</td>
+										<td style="width: 10%;"></td>
+										</tr>
+									</table>
+									<br>
+									<a href="javascript:void(0);" class="addCF glyphicon glyphicon-plus">Additional</a>
+								</div>

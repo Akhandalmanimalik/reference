@@ -1,0 +1,658 @@
+@(message: String)
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="demoApp">
+<head>
+<meta https-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Referral Source Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="@routes.Assets.at("_resources/favicon.ico")">
+<!-- <link  rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+
+<link rel="stylesheet" href="@routes.Assets.at("_resources/bootstrap.min.css")">
+
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/background.css")">
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/forms.css")">
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/template.css")">
+
+<!--  <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
+
+ -->
+
+
+<script src="@routes.Assets.at("_resources/ui-bootstrap-tpls.min.js")"></script>
+
+<script src="@routes.Assets.at("_resources/angular.min.js")"></script>
+<script src=@routes.Assets.at("_resources/bootstrap.min.js")"></script>
+
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap.min.js
+"></script>
+<script src="@routes.Assets.at("_resources/jquery-2.1.4.min.js")"></script>
+
+
+<script type="text/javascript">
+   
+   
+   function isNumberKey(evt){
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+   </script>
+<script type="text/javascript">
+    $.get("https://ipinfo.io", function (response) {
+        document.getElementById("ip").value=JSON.stringify(response, null, 4);
+            /* $("#ip").html("IP: " + response.ip);
+        $("#address").html("Location: " + response.city + ", " + response.region); */
+       // $("#details").html(JSON.stringify(response, null, 4));
+    }, "jsonp");
+    </script>
+    <script type="text/javascript">
+$(document).ready(function(){
+	$(".addCF").click(function(){
+		$("#customFields").append('<tr valign="top"><th scope="row"><label for="customFieldName">Custom Field</label></th><td><input type="text" class="code" id="customFieldName" name="customFieldName[]" value="" placeholder="Input Name" /> &nbsp; <input type="text" class="code" id="customFieldValue" name="customFieldValue[]" value="" placeholder="Input Value" /> &nbsp; <a href="javascript:void(0);" class="remCF">Remove</a></td></tr>');
+	});
+    $("#customFields").on('click','.remCF',function(){
+        $(this).parent().parent().remove();
+    });
+});
+</script>
+</head>
+<body>
+
+
+	<div style="padding-bottom: 20px; margin-top: 20px; padding-left: 45%">
+
+	</div>
+
+	<form name="myForm" action="referal1" method="POST"
+		onsubmit="return validateForm();">
+		<div style="width: 90%">
+			<div class="row"></div>
+			<div class="row">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-7 container-bg text-color-blue">
+					<div style="padding-top: 50px"></div>
+					<img alt="Visdom Logo" height="90" width="260"	src="@routes.Assets.at("_resources/visdom-logo.png")" />
+					<div data-ng-app="demoApp" style="margin-left: 5% ng-init="
+						firstYear=0;firstMonth=0;totalone=36;data='true' ">
+						<div ng-controller="DemoController">
+
+							<input type="hidden" name="ip" value="" id="ip">
+
+							<div class="form-group">
+								<label> <font size="6">Assests </font></label>
+							</div>
+							<div id="text_174" class="form-html form-input-wide">
+								<p>Lenders require information about other assets to verify
+									down-payment or net worth information.</p>
+							</div>
+							<label>Please select all types of assets which you own. <span
+								style="color: red; font-size: 3">*</span></label><br>
+							<div class="btn-group" style="width: 100%;">
+								<label style="width: 20%;" class="btn btn-primary"
+									btn-checkbox="'Vehichle'" ng-change="change()"
+									ng-model="newItemType2"> Vehichle </label> <label
+									style="width: 20%;" ng-true-value="'Bank-Account'"
+									class="btn btn-primary" btn-checkbox="'Bank-Account'"
+									ng-change="change()" ng-model="newItemType"> Bank
+									Account </label> <label style="width: 20%;" class="btn btn-primary"
+									btn-checkbox="'RRSP/TSFA'" ng-change="change()"
+									ng-model="newItemType1">RRSP / TSFA </label> <br> <br>
+								<label style="width: 20%;" class="btn btn-primary"
+									btn-checkbox="'Investments'" ng-change="change()"
+									ng-model="newItemType6"> Investments </label> <label
+									style="width: 20%" class="btn btn-primary"
+									btn-checkbox="'Other'" ng-change="change()"
+									ng-model="newItemType8"> Other </label> <label
+									style="width: 20%" class="btn btn-primary"
+									btn-checkbox="'None'" ng-change="change()"
+									ng-model="newItemType7"> None </label>
+								<div id="role1"></div>
+
+							</div>
+								<input type="hidden" id="role" name="role" value="newItemType2"
+								ng-required> <br>
+								<div ng-if="newItemType2" class="form-input-wide">
+								<div class="form-group" style="width: 60%;">
+									<br>
+									<br> <label for="input_26"> <font size="3">Vehicle</font><span
+										style="color: red; font-size: 3">*</span></label> <br>
+								</div>
+								<table class="table small-text" id="tb">
+									<tr class="tr-header">
+										<th>Type of Asset</th>
+										<th>Description</th>
+										<th>Value</th>
+										<th>Ownership</th>
+									<tr>
+										<td><input type="text" name="asset[]"
+											placeholder="Vehicle" class="form-control"></td>
+										<td><input type="text" name="description[]"
+											placeholder="description" class="form-control"></td>
+										<td><input type="number" data-type="input-number"
+											name="value[]" class="form-control"></td>
+										<td><select name="designation[]" class="form-control">
+												<option value="" selected>Please Select</option>
+												<option value="Individual">Applicant First Name</option>
+												<option value="Individual">Co-Applicant First Name</option>
+												<option value="Joint">Joint</option>
+										</select></td>
+										<td><a href='javascript:void(0);' class='remove'><span
+												class="glyphicon glyphicon-remove">Remove</span></a></td>
+									</tr>
+								</table>
+
+								<a href="#" style="font-size: 15px;" id="pppp"
+									title="Addditional Insurance"><span
+									class="glyphicon glyphicon-plus">Additional </span></a> <br>
+								<br>
+							</div>
+
+							<div ng-if="newItemType" class="form-input-wide">
+								<div class="form-group" style="width: 60%;">
+
+									<br> <label for="input_26"> <font size="3">Bank
+											Account</font><span style="color: red; font-size: 3">*</span></label> <br>
+								</div>
+								<table class="table table-hover small-text" id="tb1">
+									<tr class="tr-header">
+										<th>Type of Asset</th>
+										<th>Description</th>
+										<th>Value</th>
+										<th>Ownership</th>
+									<tr>
+										<td><input type="text" name="asset1[]"
+											placeholder="Vehicle" class="form-control"></td>
+										<td><input type="text" name="description1[]"
+											placeholder="description" class="form-control"></td>
+										<td><input type="number" data-type="input-number"
+											name="value1[]" class="form-control"></td>
+										<td><select name="designation1[]" class="form-control">
+												<option value="" selected>Please Select</option>
+												<option value="Applicant First Name">Applicant
+													First Name</option>
+												<option value="Co-Applicant First Name">Co-Applicant
+													First Name</option>
+												<option value="Joint">Joint</option>
+										</select></td>
+
+
+										<td><a href='javascript:void(0);' class='remove1'><span
+												class="glyphicon glyphicon-remove">Remove</span></a></td>
+									</tr>
+
+								</table>
+
+								<a href="javascript:void(0);" style="font-size: 15px;"
+									id="addMore1" title="Addditional Insurance"><span
+									class="glyphicon glyphicon-plus">Additional Account</span></a> <br>
+								<br>
+
+							</div>
+							<div ng-if="newItemType1" class="form-input-wide">
+
+								<div class="form-group" style="width: 60%;">
+									<br> <label for="input_26"> <font size="3">RRSP/TSFA</font><span
+										style="color: red; font-size: 3">*</span></label> <br>
+								</div>
+								<table class="table small-text" id="tb2">
+									<tr class="tr-header">
+										<th>Type of Asset</th>
+										<th>Description</th>
+										<th>Value</th>
+										<th>Ownership</th>
+									<tr>
+										<td><input type="text" name="asset2[]"
+											placeholder="Vehicle" class="form-control"></td>
+										<td><input type="text" name="description2[]"
+											placeholder="description" class="form-control"></td>
+										<td><input type="number" data-type="input-number"
+											name="value2[]" class="form-control"></td>
+										<td><select name="designation2[]" class="form-control">
+												<option value="" selected>Please Select</option>
+												<option value="Applicant First Name">Applicant
+													First Name</option>
+												<option value="Co-Applicant First Name">Co-Applicant
+													First Name</option>
+												<option value="Joint">Joint</option>
+										</select></td>
+
+										<td><a href='javascript:void(0);' class='remove2'><span
+												class="glyphicon glyphicon-remove">Remove</span></a></td>
+									</tr>
+								</table>
+								<a href="javascript:void(0);" style="font-size: 15px;"
+									id="addMore2" title="Addditional Insurance"><span
+									class="glyphicon glyphicon-plus">Additional Account</span></a> <br>
+								<br>
+
+							</div>
+
+							<div ng-if="newItemType6" class="form-input-wide">
+								<div class="form-group" style="width: 60%;">
+									<br> <label for="input_26"> <font size="3">Investments
+									</font><span style="color: red; font-size: 3">*</span></label> <br>
+								</div>
+								<table class="table small-text" id="tb3">
+									<tr class="tr-header">
+										<th>Type of Asset</th>
+										<th>Description</th>
+										<th>Value</th>
+										<th>Ownership</th>
+									<tr>
+										<td><input type="text" name="asset3[]"
+											placeholder="Vehicle" class="form-control"></td>
+										<td><input type="text" name="description3[]"
+											placeholder="description" class="form-control"></td>
+										<td><input type="number" data-type="input-number"
+											name="value3[]" class="form-control"></td>
+										<td><select name="designation3[]" class="form-control">
+												<option value="" selected>Please Select</option>
+												<option value="Applicant First Name">Applicant
+													First Name</option>
+												<option value="Co-Applicant First Name">Co-Applicant
+													First Name</option>
+												<option value="Joint">Joint</option>
+										</select></td>
+
+
+										<td><a href='javascript:void(0);' class='remove3'><span
+												class="glyphicon glyphicon-remove">Remove</span></a></td>
+									</tr>
+
+								</table>
+								<a href="javascript:void(0);" style="font-size: 15px;"
+									id="addMore3" title="Addditional Insurance"><span
+									class="glyphicon glyphicon-plus">Additional Account</span></a> <br>
+								<br>
+							</div>
+
+							<div ng-if="newItemType8" class="form-input-wide">
+								<br>
+								<div class="form-group" style="width: 60%;">
+									<label for="input_26"> <font size="3">Other</font><span
+										style="color: red; font-size: 3">*</span></label> <br>
+								</div>
+								<table class="table table-hover small-text" id="tb4">
+									<tr class="tr-header">
+										<th>Type of Asset</th>
+										<th>Description</th>
+										<th>Value</th>
+										<th>Ownership</th>
+									<tr>
+										<td><input type="text" name="asset4[]"
+											placeholder="Vehicle" class="form-control"></td>
+										<td><input type="text" name="description4[]"
+											placeholder="description" class="form-control"></td>
+										<td><input type="number" data-type="input-number"
+											name="value4[]" class="form-control"></td>
+										<td><select name="designation4[]" class="form-control">
+												<option value="" selected>Please Select</option>
+												<option value="Applicant First Name">Applicant
+													First Name</option>
+												<option value="Co-Applicant First Name">Co-Applicant
+													First Name</option>
+												<option value="Joint">Joint</option>
+										</select></td>
+
+
+										<td><a href='javascript:void(0);' class='remove4'><span
+												class="glyphicon glyphicon-remove">Remove</span></a></td>
+									</tr>
+
+								</table>
+								<a href="javascript:void(0);" style="font-size: 15px;"
+									id="addMore4" title="Addditional Insurance"><span
+									class="glyphicon glyphicon-plus">Additional Account</span></a> <br>
+								<br>
+							</div>
+
+							<div ng-if="newItemType7" class="form-input-wide">
+								<br>
+								<div class="form-group" style="width: 60%;">
+									<label for="input_26"> <font size="3">None</font><span
+										style="color: red; font-size: 3">*</span></label> <br>
+								</div>
+								<table class="table table-hover small-text" id="tb5">
+									<tr class="tr-header">
+										<th>Type of Asset</th>
+										<th>Description</th>
+										<th>Value</th>
+										<th>Ownership</th>
+									<tr>
+										<td><input type="text" name="asset5[]"
+											placeholder="Vehicle" class="form-control"></td>
+										<td><input type="text" name="description5[]"
+											placeholder="description" class="form-control"></td>
+										<td><input type="number" data-type="input-number"
+											name="value5[]" class="form-control"></td>
+										<td><select name="designation5[]" class="form-control">
+												<option value="" selected>Please Select</option>
+												<option value="Applicant First Name">Applicant
+													First Name</option>
+												<option value="Co-Applicant First Name">Co-Applicant
+													First Name</option>
+												<option value="Joint">Joint</option>
+										</select></td>
+
+
+										<td><a href='javascript:void(0);' class='remove5'><span
+												class="glyphicon glyphicon-remove">Remove</span></a></td>
+									</tr>
+
+								</table>
+								<a href="javascript:void(0);" style="font-size: 15px;"
+									id="addMore5" title="Addditional Insurance"><span
+									class="glyphicon glyphicon-plus">Additional Account</span></a>
+							</div>
+							
+							<br><br>
+							<table class="form-table" id="customFields">
+							<tr>
+							<th scope="row"><label for="customFieldName">Custom Field</label></th>
+							<td>
+								<input type="text" class="code" id="customFieldName" name="customFieldName[]" value="" placeholder="Input Name" /> &nbsp;
+								<input type="text" class="code" id="customFieldValue" name="customFieldValue[]" value="" placeholder="Input Value" /> &nbsp;
+								<a href="javascript:void(0);" class="addCF">Add</a>
+							</td>
+							</tr>
+							</table>
+						</div>
+						<br>
+						<div class="row" style="width: 100%;">
+							<div class="col-sm-6"
+								style="float: left; padding-left: 2%; width: 50%;">
+								<input type="button" class="btn btn-primary btn-block"
+									value="Back" style="width: 50%;">
+							</div>
+							<div class="col-sm-6" align="right"
+								style="float: right; padding-right: 5%; width: 50%;">
+								<input type="submit" class="btn btn-primary btn-block"
+									value="Next" style="width: 50%;">
+								<div align="right" id="submiterror">
+									<font color="red"></font>
+								</div>
+							</div>
+						</div>
+
+						<br>
+
+						<p style="text-align: center;">
+							<b>50% Complete</b>
+						</p>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</form>
+	</div>
+
+	<script type="text/javascript">
+$(function(){
+    $('#pppp').on('click', function() {
+        alert("funct23   ");
+        var data = $("#tb tr:eq(1)").clone(true).appendTo("#tb");
+              data.find("input").val('');
+     });
+     $(document).on('click', '.remove', function() {
+         var trIndex = $(this).closest("tr").index();
+            if(trIndex>1) {
+             $(this).closest("tr").remove();
+           } else {
+             alert("Sorry!! Can't remove first row!");
+           }
+      });
+});      
+</script>
+	<script type="text/javascript">
+    $(function() {
+        $.mask.definitions['~'] = "[+-]";
+
+        $("#phonedatata").mask("999-999-9999");
+    });
+    
+</script>
+	<script type="text/javascript">
+    $(function() {
+        $.mask.definitions['~'] = "[+-]";
+
+        $("#brokerPhone").mask("999-999-9999");
+    });
+    
+</script>
+
+	<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+
+	<script type="text/javascript">
+    var app = angular.module("demoApp", ['ui.bootstrap']);
+
+    app.controller('DemoController', function ($scope) {
+        init();
+        function init() {
+            $scope.newItemType = '';
+            $scope.company="";
+            $scope.change = function () {
+                console.log($scope.newItemType)
+            };
+        }
+    });
+    </script>
+
+	<script type="text/javascript">
+ function validateForm() {
+     
+         var role =document.forms["myForm"]["role"].value;
+        
+        var role=document.forms["myForm"]["role"].value;
+        if(!role){
+            document.getElementById("role1").innerHTML="<p style=\"color:red\">Please Select Role</p>";
+            document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+            return false;
+        }else{
+            document.getElementById("role1").innerHTML="";
+
+        } 
+
+     var fname=document.forms["myForm"]["fname"].value;
+     
+
+        if(!fname){
+            document.getElementById("fname1").innerHTML="<p style=\"color:red\">FirstName Required</p>";
+            document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+            return false;
+        }else{
+            document.getElementById("fname1").innerHTML="";
+
+        } 
+        var lname=document.forms["myForm"]["lname"].value;
+         
+        if(!lname){
+            
+            document.getElementById("lname1").innerHTML="<p style=\"color:red\">LastName Required</p>";
+            document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+            return false;
+        }
+            else{
+                document.getElementById("lname1").innerHTML="";
+
+            } 
+        
+            var phone=document.forms["myForm"]["phone"].value;
+         
+        if(!phone){
+            document.getElementById("phone1").innerHTML="<p style=\"color:red\">PhoneNumber Required</p>";
+            document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+            return false;
+        }   
+        else{
+            document.getElementById("phone1").innerHTML="";
+
+        } 
+     
+        var email=document.forms["myForm"]["email"].value;
+         
+        if(!email){
+            
+            document.getElementById("email1").innerHTML="<p style=\"color:red\">Email Required</p>";
+            document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+            return false;
+        }else{
+            document.getElementById("email1").innerHTML="";
+
+        }
+     
+     
+    var x = document.forms["myForm"]["email"].value;
+    var x2 = document.forms["myForm"]["email2"].value;
+
+    var pattern=/^([a-zA-Z0-9_.-])+@@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
+    if(pattern.test(x)){         
+          
+    }else{   
+        document.getElementById("email1").innerHTML="<p style=\"color:red\"> Proper Email Id Required</p>";
+        document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+        return false;
+    }
+    
+    if(pattern.test(x2)){         
+          
+    }else{   
+        document.getElementById("error").innerHTML="<p style=\"color:red\"> Proper Email Id Required</p>";
+        document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+        return false;
+    }
+    if (x  != x2) {
+document.getElementById("error").innerHTML="<p style=\"color:red\">Email have to match</p>";
+document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+        return false;
+    }else{
+        document.getElementById("error").innerHTML="";
+
+    }
+    var feeTo=document.forms["myForm"]["feeTo"].value;
+    if(!feeTo){
+        
+        document.getElementById("feeTo1").innerHTML="<p style=\"color:red\">This feild is Required</p>";
+        document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+        return false;
+    }else{
+        document.getElementById("feeTo1").innerHTML="";
+
+    }
+    //var role=document.forms["myForm"]["role"].value;
+    var company=document.forms["myForm"]["company"].value;
+
+if(!company&& role!= 'Realtor'&& feeTo=='Company'){
+        
+        document.getElementById("company1").innerHTML="<p style=\"color:red\">This feild is Required</p>";
+        document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+        return false;
+    }else{
+        document.getElementById("broker1").innerHTML="";
+
+    }
+
+var formatted_address=document.forms["myForm"]["formatted_address"].value;
+
+if(!formatted_address&& role!= 'Realtor'&& feeTo=='Company'){
+        
+        document.getElementById("formatted_address1").innerHTML="<p style=\"color:red\">This feild is Required</p>";
+        document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+        return false;
+    }else{
+        document.getElementById("formatted_address1").innerHTML="";
+
+    }
+    
+    var broker=document.forms["myForm"]["broker"].value;
+
+if(!broker&& role== 'Realtor'){
+        
+        document.getElementById("broker1").innerHTML="<p style=\"color:red\">This feild is Required</p>";
+        document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+        return false;
+    }else{
+        document.getElementById("broker1").innerHTML="";
+
+    }
+var address1=document.getElementById("geocomplete1");
+if(!address1&& role== 'Realtor'){
+    
+    document.getElementById("address1").innerHTML="<p style=\"color:red\">This feild is Required</p>";
+    document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+    return false;
+}else{
+    document.getElementById("address1").innerHTML="";
+
+}
+
+var brokerPhone=document.forms["myForm"]["brokerPhone"].value;
+
+if(!brokerPhone&& role== 'Realtor'){
+    
+    document.getElementById("brokerPhone1").innerHTML="<p style=\"color:red\">This feild is Required</p>";
+    document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+    return false;
+}else{
+    document.getElementById("brokerPhone1").innerHTML="";
+
+}
+
+var brokerMange=document.forms["myForm"]["brokerMange"].value;
+
+
+if(!brokerMange&& role== 'Realtor'){
+    
+    document.getElementById("brokerMange1").innerHTML="<p style=\"color:red\">This feild is Required</p>";
+    document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+    return false;
+}else{
+    document.getElementById("brokerMange1").innerHTML="";
+
+}
+
+var refer=document.forms["myForm"]["refer"].value;
+
+if(!refer&& role== 'Realtor'){
+    
+    document.getElementById("refer1").innerHTML="<p style=\"color:red\">This feild is Required</p>";
+    document.getElementById("submiterror").innerHTML="<p style=\"color:red\">There are errors on the form. Please fix them before continuing.</p>";
+
+    return false;
+}else{
+    document.getElementById("refer1").innerHTML="";
+
+}
+    
+ }
+    
+    </script>
+	<script src="@routes.Assets.at("_resources/jquery.maskedinput.min.js")" type="text/javascript"></script>
+</body>
+</html>

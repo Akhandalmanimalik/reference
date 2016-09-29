@@ -1,0 +1,840 @@
+@(uniid: String)
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta https-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Mortgage Refinance Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ <link rel="shortcut icon" href="@routes.Assets.at("_resources/favicon.ico")">
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js
+"></script>
+
+
+<link rel="stylesheet" href="@routes.Assets.at("_resources/jquery-ui.css")">
+<script src="@routes.Assets.at("_resources/jquery-1.9.1.js")"></script>
+<script src="@routes.Assets.at("_resources/jquery-ui.js")"></script>
+
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+ -->
+   <script src="@routes.Assets.at("_resources/jquery-2.1.4.min.js")"></script>
+    <script src="@routes.Assets.at("_resources/jquery.geocomplete.js")"></script>
+    <style type="text/css">
+    
+    .ui-datepicker-calendar {
+    display: none;
+    }
+    
+	
+	.blocks .btn-primary {
+	font-weight:bold;
+    padding: 9px 6px;
+    margin:2px 2px;
+    background-color: #0086b3;
+    
+     border-radius: 0;
+	}
+</style>
+
+    <script>
+      $(function(){
+        $("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });
+      });
+    </script>
+     <script>
+      $(function(){
+        $("#geocomplete1").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete1").trigger("geocode");
+        });
+      });
+      
+    </script>
+<!-- <script src="_resources/jquery.maskedinput.min.js" type="text/javascript"></script>
+ -->  
+ <link rel="stylesheet" href="_resources/bootstrap.min.css">
+ <link rel="stylesheet" href="@routes.Assets.at("_resources/bootstrap.min.css")">
+<script src=@routes.Assets.at("_resources/bootstrap.min.js")"></script>  
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/background.css")">
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/forms.css")">
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/template.css")">
+</head>
+<body>
+<br>
+<br>
+<div style="width: 97%">
+		<form name="myForm" action="mortgageForm6" method="POST" onsubmit="return validateForm()">
+		<input type="hidden" value="@uniid" name="uniid">
+		<div class="row"></div>
+		<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-7 container-bg text-color-blue">
+			
+		<div align="left" style="padding-bottom: 1px; margin-top: 20px; padding-left: 3%">
+			<img alt="Visdom Logo" height="65" width="210"
+				src="@routes.Assets.at("_resources/visdom-logo.png")" />
+		</div>
+		<div style="padding-top: 30px"></div>
+		<div data-ng-app="demoApp"  style="margin-left: 5%">
+		<div ng-controller="DemoController" ng-init="isDisabled = false">
+		
+		<label class="labelfont">Applicant</label><br><br>
+		<label class="labelfont">What types of income do you currently recieve?Select all that apply.<span style="color: red; font-size: 3">*</span></label><br>
+			<div class="btn-group" style="padding-left: 0%; width: 100%;">
+          			
+              <label style="width: 20%;" class="btn btn-primary" ng-true-value="Employee" btn-checkbox="'Employee'"
+                      ng-change="change()"  ng-model="Employee"> Employee
+                                
+              </label>              
+              <label style="width: 20%;" class="btn btn-primary" ng-true-value="SelfEmployed" btn-checkbox="'SelfEmployed'"
+                       ng-change="change()"  ng-model="SelfEmployed"> Self-Employed
+		      </label>
+              <label style="width: 20%;" class="btn btn-primary" ng-true-value="Pension" btn-checkbox="'Pension'"
+                      ng-change="change()"  ng-model="Pension"> Pension
+              </label>
+              <label style="width: 20%;" class="btn btn-primary" ng-true-value="Investments" btn-checkbox="'Investments'"
+                      ng-change="change()"  ng-model="Investments"> Investments
+                                
+              </label>              
+              <label style="width: 20%; border-radius: 0px 5px 5px 0px;" class="btn btn-primary" ng-true-value="Maternity" btn-checkbox="'Maternity'"
+                       ng-change="change()"  ng-model="Maternity"> Maternity
+		      </label>
+		      <br>
+              <br>
+              <label style="width: 20%; border-radius: 5px 0px 0px 5px;" class="btn btn-primary" ng-true-value="VehicleAllow" btn-checkbox="'VehicleAllow'"
+                      ng-change="change()"  ng-model="VehicleAllow"> Vehicle Allow
+              </label>
+              <label style="width: 20%;" class="btn btn-primary" ng-true-value="LivingAllow'" btn-checkbox="'LivingAllow'"
+                      ng-change="change()"  ng-model="LivingAllow"> Living Allow
+              </label>
+              <label style="width: 20%;" class="btn btn-primary" ng-true-value="Commission" btn-checkbox="'Commission'"
+                      ng-change="change()"  ng-model="Commission"> Commission
+              </label>
+              <label style="width: 20%;" class="btn btn-primary" ng-true-value="Bonus" btn-checkbox="'Bonus'"
+                      ng-change="change()"  ng-model="Bonus"> Bonus
+              </label>
+              <label style="width: 20%; border-radius: 0px 5px 5px 0px;" class="btn btn-primary" ng-true-value="Other" btn-checkbox="'Other'"
+                      ng-change="change()"  ng-model="Other"> Other
+              </label>
+              <div id="input_204"> </div>
+            </div>
+		<br>
+		<div ng-if="Employee== true || SelfEmployed == true || Pension == true || Investments == true || Maternity == true || VehicleAllow == true || LivingAllow == true || Commission == true || Bonus == true || Other == true">
+				<br>
+				<div class="row">
+					  <div class="col-sm-3"><label>Type of Income:</label></div>
+					  <div class="col-sm-3"><label>Business:</label></div>
+					  <div class="col-sm-3"><label>Start Month:</div>
+					  <div class="col-sm-3"><label>Postion:</label></div>
+					  </div>
+		</div>
+		<div ng-if="Employee== true">
+							  <div class="row">
+							  <div class="col-sm-3">
+							  <!-- <label>Type of Income:</label><br> -->
+							  		<input type="text" name="empIncomeTypes" placeholder="E.g. Employer" class="form-control" value="Employed" style="width: 100%;" readonly="readonly">
+									     		<div id="input_1101"></div>
+							  </div>
+							  <div class="col-sm-3">
+							  <!-- <label>Business:</label><br> -->
+							  		<input type="text" name="empBusinessName" placeholder="E.g. Business Name" style="width: 100%;" class="form-control">
+      											<div id="input_1102"></div>	
+							  </div>
+							  <div class="col-sm-3">
+							  <!-- <label>Start Month:</label><br> -->
+							  		<input type="text" name="empStartMonth" placeholder="mm/dd/yyyy" ng-model="empFirstMonYear"  ng-blur="employe1(this)" style="width: 100%;" class="form-control">
+									     	<div id="input_1105"></div>
+							  </div>
+							  <div class="col-sm-3">
+							  <!-- <label>Position:</label><br> -->
+							  		<input type="text" name="empPosition" placeholder="E.g. Manager" class="form-control" style="width: 100%;">
+      										<div id="input_1106"></div>
+      						  </div>				
+							  </div>
+							<input type="hidden" name="totalMonths" ng-model="employetotal1">
+					<div ng-if="employetotal1< 36">
+							<div>
+								<h4 style="padding-left: 0%;"><Strong>Work History</Strong></h4>
+								<hr style="width: 96%; border-color: #006699; margin-top: 0%; margin-bottom: 0%;" />
+								<label class="labelfont">Lenders require at least 3 years of work history. Where did you work previously?</label><br>
+							</div>
+									<div class="row">
+										<div class="col-sm-3" >
+											<input type="text" name="empIncomeTypes2"
+												placeholder="E.g. Employer" style="width: 100%;"
+												class="form-control" value="Employed" readonly="readonly">
+											<div id="input_1101""></div>
+										</div>
+										<div class="col-sm-3">
+											<input type="text" name="empBusinessName2"
+												placeholder="E.g. Business Name" style="width: 100%;"
+												class="form-control">
+											<div id="input_1102"></div>
+										</div>
+										<div class="col-sm-3">
+											<input type="text" name="empStartMonth2"
+												placeholder="mm/dd/yyyy" ng-model="empSecMonYear"
+												ng-blur="employe1(this)" style="width: 100%;"
+												class="form-control">
+											<div id="input_1105"></div>
+										</div>
+										<div class="col-sm-3">
+											<input type="text" name="empPosition2"
+												placeholder="E.g. Manager" style="width: 100%;"
+												class="form-control">
+											<div id="input_1106"></div>
+										</div>
+										
+									</div>
+									<br>
+									<div ng-if="employetotal2< 36">
+										<div class="row">
+										<div class="col-sm-3" >
+											<input type="text" name="empIncomeTypes3"
+												placeholder="E.g. Employer" style="width: 100%;"
+												class="form-control" value="Employed" readonly="readonly">
+											<div id="input_1101""></div>
+										</div>
+										<div class="col-sm-3">
+											<input type="text" name="empBusinessName3"
+												placeholder="E.g. Business Name" style="width: 100%;"
+												class="form-control">
+											<div id="input_1102"></div>
+										</div>
+										<div class="col-sm-3">
+											<input type="text" name="empStartMonth3"
+												placeholder="mm/dd/yyyy" ng-model="empThirdMonYear"
+												ng-blur="employe1(this)" style="width: 100%;"
+												class="form-control">
+											<div id="input_1105"></div>
+										</div>
+										<div class="col-sm-3">
+											<input type="text" name="empPosition3"
+												placeholder="E.g. Manager" style="width: 100%;"
+												class="form-control">
+											<div id="input_1106"></div>
+										</div>
+										
+									</div>
+									<br>
+									<div ng-if="employetotal3< 36">
+										<div class="row">
+										<div class="col-sm-3" >
+											<input type="text" name="empIncomeTypes4"
+												placeholder="E.g. Employer" style="width: 100%;"
+												class="form-control" value="Employed" readonly="readonly">
+											<div id="input_110221""></div>
+										</div>
+										<div class="col-sm-3">
+											<input type="text" name="empBusinessName4"
+												placeholder="E.g. Business Name" style="width: 100%;"
+												class="form-control">
+											<div id="input_1102"></div>
+										</div>
+										<div class="col-sm-3">
+											<input type="text" name="empStartMonth4"
+												placeholder="mm/dd/yyyy" ng-model="empFourthMonYear"
+												ng-blur="employe1(this)" style="width: 100%;"
+												class="form-control">
+											<div id="input_1105"></div>
+										</div>
+										<div class="col-sm-3">
+											<input type="text" name="empPosition4"
+												placeholder="E.g. Manager" style="width: 100%;"
+												class="form-control">
+											<div id="input_1106"></div>
+										</div>
+									</div>
+							</div>
+					</div>
+					</div>
+					</div>	
+					<div ng-if="SelfEmployed == true">
+					<br>
+					  <div class="row">
+					  <div class="col-sm-3">
+									     		<input type="text" name="selfIncomeTypes" placeholder="E.g. Self-Employed" style="width: 100%;" class="form-control" value="SelfEmployed" readonly="readonly">
+									     		<div id="input_1101""></div>
+					  </div>
+					  <div class="col-sm-3">
+      											<input type="text" name="selfBusinessName" placeholder="E.g. Business Name" style="width: 100%;" class="form-control">
+      											<div id="input_1102"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="selfStartMon" placeholder="mm/dd/yyyy" ng-model="slfempFirstMonYear"  ng-blur="employe2(this)" style="width: 100%;" class="form-control">
+									     	<div id="input_1105"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="selfPosition"  placeholder="E.g. Manager" class="form-control">
+      										<div id="input_1106"></div>
+					  </div>
+					  </div>
+					  <div ng-if="slfemployetotal1<36">
+					  		<div>
+					  			<h4 style="padding-left: 0%;"><Strong>Work History</Strong></h4>
+							<hr style="width: 96%; border-color: #006699; margin-top: 0%; margin-bottom: 0%;" />
+							<label style="padding-left: 0%;">
+							<label class="labelfont">Lenders require at least 3 years of work history. Where did you work previously?</label>
+					  		</div>
+					  	  <div class="row">
+						  <div class="col-sm-3">
+						  		<input type="text" name="selfIncomeTypes2" placeholder="E.g. Self-Employed" style="width: 100%;" class="form-control" value="SelfEmployed" readonly="readonly">
+									     		<div id="input_1101"></div>
+						  </div>
+						  <div class="col-sm-3">
+						  		<input type="text" name="selfBusinessName2" placeholder="E.g. Business Name" style="width: 100%;" class="form-control">
+      											<div id="input_1102"></div>
+						  </div>
+						  <div class="col-sm-3">
+						  		<input type="text" name="selfStartMon2" placeholder="mm/dd/yyyy" ng-model="slfsecMonYears" ng-blur="employe2(this)" style="width: 100%;" class="form-control">
+									     	<div id="input_11s05"></div>
+						  </div>
+						  <div class="col-sm-3">
+						  		<input type="text" name="selfPosition2"  placeholder="E.g. Manager" style="width: 100%;" class="form-control">
+      										<div id="input_1106"></div>
+						  </div>
+						  </div>
+						  <br>
+							<div ng-if="slfemployetotal2 < 36">
+								<div class="row">
+								  <div class="col-sm-3">
+								  		<input type="text" name="selfIncomeTypes3" placeholder="E.g. Self-Employed" style="width: 100%;" class="form-control" value="SelfEmployed" readonly="readonly">
+									     		<div id="input_1101"></div>
+								  </div>
+								  <div class="col-sm-3">
+								  		<input type="text" name="selfBusinessName3" placeholder="E.g. Business Name" style="width: 100%;" class="form-control">
+      											<div id="input_1102"></div>
+								  </div>
+								  <div class="col-sm-3">
+								  		<input type="text" name="selfStartMon3" placeholder="mm/dd/yyyy" ng-model="slfthirdMonYear" ng-blur="employe2(this)" style="width: 100%;" class="form-control">
+									     	<div id="input_1105"></div>
+								  </div>
+								  <div class="col-sm-3">
+								  		<input type="text" name="selfPosition3"  placeholder="E.g. Manager" style="width: 100%;" class="form-control">
+      										<div id="input_1106"></div>
+								  </div>
+								  </div>
+								  <br>
+								  
+							<div ng-if="slfemployetotal3< 36">
+								<div class="row">
+							  <div class="col-sm-3">
+							  		<input type="text" name="selfIncomeTypes4" placeholder="E.g. Self-Employed" style="width: 100%;" class="form-control" value="SelfEmployed" readonly="readonly">
+									     		<div id="input_1101"></div>
+							  </div>
+							  <div class="col-sm-3">
+							  		<input type="text" name="selfBusinessName4" placeholder="E.g. Business Name" style="width: 100%;" class="form-control">
+      											<div id="input_1102"></div>
+							  </div>
+							  <div class="col-sm-3">
+							  		<input type="text" name="selfStartMon4" placeholder="mm/dd/yyyy" ng-model="slffourthMonYear" ng-blur="employe2(this)" style="width: 100%;" class="form-control">
+									     	<div id="input_1105"></div>
+							  </div>
+							  <div class="col-sm-3">
+							  		<input type="text" name="selfPosition4"  placeholder="E.g. Manager" style="width: 100%;" class="form-control">
+      										<div id="input_1106"></div>
+							  </div>
+							  </div>
+							</div>
+							</div>
+						</div>
+						</div>
+						
+					<div ng-if="Pension==true">
+						<br>
+					  <div class="row">
+					  <div class="col-sm-3">
+									     		<input type="text" name="pensionIcome1" placeholder="E.g. Self-Employed" style="width: 100%;" class="form-control" value="Pension" readonly="readonly">
+									     		<div id="input_5001""></div>
+					  </div>
+					  <div class="col-sm-3">
+      											<input type="text" name="pensionBusiness1" placeholder="E.g. Business Name" style="width: 100%;" class="form-control">
+      											<div id="input_5002"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="pensionMY1" placeholder="mm/dd/yyyy" ng-model="pensionMY1"  ng-blur="employe3(this)" style="width: 100%;" class="form-control">
+									     	<div id="input_5003"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="pensionPosition1"  placeholder="E.g. Manager" style="width: 100%;" class="form-control">
+      										<div id="input_5004"></div>
+					  </div>
+					  </div>
+						</div>
+						
+					<div ng-if="Investments==true">
+					<br>
+					  <div class="row">
+					  <div class="col-sm-3">
+									     		<input type="text" name="InvestmentsType1" placeholder="E.g. Investments" style="width: 100%;" class="form-control" value="Investments" readonly="readonly">
+									     		<div id="input_5001""></div>
+					  </div>
+					  <div class="col-sm-3">
+      											<input type="text" name="InvestmentBusiness1" placeholder="E.g. Business Name" style="width: 100%;" class="form-control">
+      											<div id="input_5002"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="InvestmentsMY1" placeholder="mm/dd/yyyy" ng-model="InvestmentsMY1"  ng-blur="employe3(this)" style="width: 100%;" class="form-control">
+									     	<div id="input_5003"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="InvestmentPosition1"  placeholder="E.g. Manager" style="width: 100%;" class="form-control">
+      										<div id="input_5004"></div>
+					  </div>
+					  </div>
+					</div>		 								
+					
+					<div ng-if="Maternity==true">
+					<br>
+					  <div class="row">
+					  <div class="col-sm-3">
+									     		<input type="text" name="MaternityType1" placeholder="E.g. Maternity" style="width: 100%;" class="form-control" value="Maternity" readonly="readonly">
+									     		<div id="input_5001""></div>
+					  </div>
+					  <div class="col-sm-3">
+      											<input type="text" name="MaternityBusiness1" placeholder="E.g. Business Name" style="width: 100%;" class="form-control">
+      											<div id="input_5002"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="MaternityMY1" placeholder="mm/dd/yyyy" ng-model="MaternityMY1"  ng-blur="employe3(this)" style="width: 100%;" class="form-control">
+									     	<div id="input_5003"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="MaternityPosition1"  placeholder="E.g. Manager" style="width: 100%;" class="form-control">
+      										<div id="input_5004"></div>
+					  </div>
+					  </div>
+					</div>
+					
+					<div ng-if="VehicleAllow==true">
+					<br>
+					  <div class="row">
+					  <div class="col-sm-3">
+									     		<input type="text" name="MaternityType1" placeholder="E.g. Maternity" style="width: 100%;" class="form-control" value="VehicleAllow" readonly="readonly">
+									     		<div id="input_5001""></div>
+					  </div>
+					  <div class="col-sm-3">
+      											<input type="text" name="MaternityBusiness1" placeholder="E.g. Business Name" style="width: 100%;" class="form-control">
+      											<div id="input_5002"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="MaternityMY1" placeholder="mm/dd/yyyy" ng-model="MaternityMY1"  ng-blur="employe3(this)" style="width: 100%;" class="form-control">
+									     	<div id="input_5003"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="MaternityPosition1"  placeholder="E.g. Manager" style="width: 100%;" class="form-control">
+      										<div id="input_5004"></div>
+					  </div>
+					  </div>
+						
+					</div>
+					
+					<div ng-if="LivingAllow==true">
+					<br>
+					  <div class="row">
+					  <div class="col-sm-3">
+									     		<input type="text" name="livingAllowType1" placeholder="E.g. LivingAllow" style="width: 100%;" class="form-control" value="LivingAllow" readonly="readonly">
+									     		<div id="input_5001""></div>
+					  </div>
+					  <div class="col-sm-3">
+      											<input type="text" name="livingAllowBusiness1" placeholder="E.g. Business Name" style="width: 100%;" class="form-control">
+      											<div id="input_5002"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="livingAllowMY1" placeholder="mm/dd/yyyy" ng-model="livingAllowY1"  ng-blur="employe3(this)" style="width: 100%;" class="form-control">
+									     	<div id="input_5003"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="livingAllowPosition1"  placeholder="E.g. Manager" style="width: 100%;" class="form-control">
+      										<div id="input_5004"></div>
+					  </div>
+					  </div>
+						
+					</div>
+					
+					<div ng-if="Commission==true">
+					<br>
+					  <div class="row">
+					  <div class="col-sm-3">
+									     		<input type="text" name="commissionype1" placeholder="E.g. Commision" style="width: 100%;" class="form-control" value="Commission" readonly="readonly">
+									     		<div id="input_5001""></div>
+					  </div>
+					  <div class="col-sm-3">
+      											<input type="text" name="commissionBusiness1" placeholder="E.g. Business Name" style="width: 100%;" class="form-control">
+      											<div id="input_5002"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="commissionMY1" placeholder="mm/dd/yyyy" ng-model="commissionMY1"  ng-blur="employe3(this)" style="width: 100%;" class="form-control">
+									     	<div id="input_5003"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="commissionPosition1"  placeholder="E.g. Manager" style="width: 100%;" class="form-control">
+      										<div id="input_5004"></div>
+					  </div>
+					  </div>
+						
+					</div>
+					
+					<div ng-if="Bonus==true">
+					<br>
+					  <div class="row">
+					  <div class="col-sm-3">
+									     		<input type="text" name="bonus1" placeholder="E.g. Bonus" style="width: 100%;" class="form-control" value="Bonus" readonly="readonly">
+									     		<div id="input_5001""></div>
+					  </div>
+					  <div class="col-sm-3">
+      											<input type="text" name="bonusBusiness1" placeholder="E.g. Business Name" style="width: 100%;" class="form-control">
+      											<div id="input_5002"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="bonusMY1" placeholder="mm/dd/yyyy" ng-model="bonusMY1"  ng-blur="employe3(this)" style="width: 100%;" class="form-control">
+									     	<div id="input_5003"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="bonusPosition1"  placeholder="E.g. Manager" style="width: 100%;" class="form-control">
+      										<div id="input_5004"></div>
+					  </div>
+					  </div>
+						
+					</div>
+					
+					<div ng-if="Other==true">
+					<br>
+					  <div class="row">
+					  <div class="col-sm-3">
+									     		<input type="text" name="other1" placeholder="E.g. Other" style="width: 100%;" class="form-control" value="Other" readonly="readonly">
+									     		<div id="input_5001""></div>
+					  </div>
+					  <div class="col-sm-3">
+      											<input type="text" name="otherBusiness1" placeholder="E.g. Business Name" style="width: 100%;" class="form-control">
+      											<div id="input_5002"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="otherMY1" placeholder="mm/dd/yyyy" ng-model="otherMY1"  ng-blur="employe3(this)" style="width: 100%;" class="form-control">
+									     	<div id="input_5003"></div>
+					  </div>
+					  <div class="col-sm-3">
+											<input type="text" name="otherPosition1"  placeholder="E.g. Manager" style="width: 100%;" class="form-control">
+      										<div id="input_5004"></div>
+					  </div>
+					  </div>
+						
+					</div>
+			      <br>
+	        		<div>
+						<div style="float: right;padding-right:7%;">
+							<input type="submit" class="btn btn-primary btn-block"
+								value="Next" style=" width: 110px">
+
+							<div align="right" id="submiterror">
+								<font color="red"></font>
+							</div>
+						</div>
+						<div style="float: left;padding-left:4%;">
+							<input type="button" class="btn btn-primary btn-block"
+								value="Back" style=" width: 110px;">
+						</div>
+					</div>
+					<br>
+		</div>
+						<br>
+						<div class="container" style="width: 70%;">
+						  <div class="progress">
+						    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:15%">
+						    </div>
+						  </div>
+						</div>
+					 </div>
+				</div>
+				</div>
+				<br>
+				
+			</form>
+			</div>
+<script>
+$(function() {
+	$('.date-picker').datepicker( {
+	    changeMonth: true,
+	    changeYear: true,
+	    showButtonPanel: true,
+	    dateFormat: 'MM yy',
+	    onClose: function(dateText, inst) { 
+	        var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+	        var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+	        $(this).datepicker('setDate', new Date(year, month, 1));
+	    }
+	});
+	});
+</script>
+</form>
+</div>
+<script type="text/javascript">
+    $(function() {
+        $.mask.definitions['~'] = "[+-]";
+
+        $("#phonedatata").mask("999-999-9999");
+    });
+	
+</script>
+
+ <script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/Are you Self-Employed?js?sensor=false&amp;libraries=places"></script>
+ 
+    <script src="jquery.geocomplete.js"></script>
+    <script>
+      $(function(){
+        $("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });
+      });
+    </script>
+    
+     <script>
+      $(function(){
+        $("#geocomplete1").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete1").trigger("geocode");
+        });
+      });
+    </script>
+   <script type="text/javascript">
+    var app = angular.module("demoApp", ['ui.bootstrap']);
+
+    app.controller('DemoController', function ($scope) {
+        init();
+        function init() {
+            $scope.newItemType = '';
+            $scope.company="";
+            $scope.change = function () {
+                console.log($scope.newItemType)
+            };
+        }
+        
+        $scope.employe1 = function ($scope) {
+        $scope.employetotal=0;
+        var one= $scope.empFirstMonYear;
+        var date =one.split("/");
+        var oneDate=date[0]+"/1/"+date[2];
+        var total=0;
+           
+       	var today = new Date();
+		var datevDate=new Date(oneDate);
+		
+		var one_day=1000*60*60*24;
+		var date1ms=today.getTime();
+		var date2ms=datevDate.getTime();
+		
+		var totmili=date1ms-date2ms;
+		var totalDays=Math.round(totmili/one_day);
+		var totalMonths=Math.abs((totmili/one_day)/30);
+		
+    	total=Math.floor(totalMonths); 
+ 		$scope.employetotal1 = total;
+           if(total <36){
+                one= $scope.empSecMonYear;
+                date =one.split("/");
+                oneDate=date[0]+"/1/"+date[2];
+        	   datevDate=new Date(oneDate);
+        	   
+  			      	   
+       		 one_day=1000*60*60*24;
+       		 date1ms=date2ms;
+       		 date2ms=datevDate.getTime();
+     		
+
+       		
+       		 totmili=date1ms-date2ms;
+       		 
+       			 if(isNaN(totmili) == false){
+       		 totalDays=Math.round(totmili/one_day);
+
+       		 totalMonths=Math.abs((totmili/one_day)/30);
+
+
+
+
+     		total=total+Math.floor(totalMonths); 
+
+     		$scope.employetotal2 = total;
+     		
+     		
+     		 if(total<36){
+     			 
+     			 
+     			  one= $scope.empThirdMonYear;
+                  date =one.split("/");
+                  oneDate=date[0]+"/1/"+date[2];
+          	   datevDate=new Date(oneDate);
+            		
+           		 one_day=1000*60*60*24;slfempFirstMonYear
+           		 date1ms=date2ms;
+           		 date2ms=datevDate.getTime();
+           		
+           		 totmili=date1ms-date2ms;
+           		if(isNaN(totmili) == false){
+
+           		 totalDays=Math.round(totmili/one_day);
+           		 totalMonths=Math.abs((totmili/one_day)/30);
+          		total=Math.floor(total)+Math.floor(totalMonths); 
+
+         		$scope.employetotal3 = total;
+         		 if(total<36){
+         		 
+   			  one= $scope.fourthMonYear;
+                date =one.split("/");
+                oneDate=date[0]+"/1/"+date[2];
+        	   datevDate=new Date(oneDate);
+          		
+         		 one_day=1000*60*60*24;
+         		 date1ms=date2ms;
+         		 date2ms=datevDate.getTime();
+         		
+         		 totmili=date1ms-date2ms;
+         		if(isNaN(totmili) == false){
+
+         		 totalDays=Math.round(totmili/one_day);
+         		 totalMonths=Math.abs((totmili/one_day)/30);
+        		total=Math.floor(total)+Math.floor(totalMonths); 
+
+       		$scope.employetotal4 = total;
+         		}
+         		}
+           		}
+             }
+        	   }
+           }
+        };
+        $scope.employe2 = function ($scope) {
+            var one= $scope.slfempFirstMonYear;
+            var date =one.split("/");
+            var oneDate=date[0]+"/1/"+date[2];
+            var total=0;
+               
+           	var today = new Date();
+    		var datevDate=new Date(oneDate);
+    		
+    		var one_day=1000*60*60*24;
+    		var date1ms=today.getTime();
+    		var date2ms=datevDate.getTime();
+    		
+    		var totmili=date1ms-date2ms;
+    		var totalDays=Math.round(totmili/one_day);
+    		var totalMonths=Math.abs((totmili/one_day)/30);
+    		
+        	total=Math.floor(totalMonths);
+        	
+     		$scope.slfemployetotal1 = total;
+               if(total <36){
+                    one= $scope.slfsecMonYears;
+                    date =one.split("/");
+                    oneDate=date[0]+"/1/"+date[2];
+            	   datevDate=new Date(oneDate);
+            	   
+      			      	   
+           		 one_day=1000*60*60*24;
+           		 date1ms=date2ms;
+           		
+           		 date2ms=datevDate.getTime();
+         		
+
+           		
+           		 totmili=date1ms-date2ms;
+           		 
+           			 if(isNaN(totmili) == false){
+           		 totalDays=Math.round(totmili/one_day);
+
+           		 totalMonths=Math.abs((totmili/one_day)/30);
+
+         		total=total+Math.floor(totalMonths); 
+
+         		$scope.slfemployetotal2 = total;
+         		
+         		
+         		
+         		 if(total<36){
+         		
+         			  one= $scope.slfthirdMonYear;
+                      date =one.split("/");
+                      oneDate=date[0]+"/1/"+date[2];
+              	   	  datevDate=new Date(oneDate);
+                		
+               		 one_day=1000*60*60*24;
+               		 date1ms=date2ms;
+               		 date2ms=datevDate.getTime();
+               		
+               		 totmili=date1ms-date2ms;
+               		if(isNaN(totmili) == false){
+
+               		 totalDays=Math.round(totmili/one_day);pensiontotal1
+               		 totalMonths=Math.abs((totmili/one_day)/30);
+              		total=Math.floor(total)+Math.floor(totalMonths); 
+
+             		$scope.slfemployetotal3 = total;
+             		 if(total<36){
+             		 
+       			  one= $scope.slffourthMonYear;
+                    date =one.split("/");
+                    oneDate=date[0]+"/1/"+date[2];
+            	   datevDate=new Date(oneDate);
+              		
+             		 one_day=1000*60*60*24;
+             		 date1ms=date2ms;
+             		 date2ms=datevDate.getTime();
+             		
+             		 totmili=date1ms-date2ms;
+             		if(isNaN(totmili) == false){
+
+             		 totalDays=Math.round(totmili/one_day);
+             		 totalMonths=Math.abs((totmili/one_day)/30);
+            		total=Math.floor(total)+Math.floor(totalMonths); 
+
+           		$scope.slfemployetotal4 = total;
+             		}
+             	   }
+               	  }
+                 }
+               }
+              }
+            };
+            
+    });
+    </script>
+</body>
+</html>

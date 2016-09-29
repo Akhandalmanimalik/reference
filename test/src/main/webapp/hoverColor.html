@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<style>
+a {
+	color: #900;
+	text-decoration: none;
+}
+
+a:hover {
+	position: relative;
+}
+
+a[data-title]:hover:after {
+	content: attr(data-title);
+	padding: 4px 8px;
+	color: #333;
+	position: absolute;
+	left: 0;
+	top: 100%;
+	white-space: nowrap;
+	z-index: 20px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0px 0px 4px #222;
+	-webkit-box-shadow: 0px 0px 4px #222;
+	box-shadow: 0px 0px 4px #222;
+	background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eeeeee),
+		color-stop(1, #cccccc));
+	background-image: -webkit-linear-gradient(top, #eeeeee, #9edfeb);
+	background-image: -moz-linear-gradient(top, #eeeeee, #9edfeb);
+	background-image: -ms-linear-gradient(top, #eeeeee, #9edfeb);
+	background-image: -o-linear-gradient(top, #eeeeee, #9edfeb);
+}
+
+label[data-title]:hover:after {
+    content: attr(title);
+    color: red;
+    background-color: #9edfeb;
+}
+</style>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		Pellentesque habitant morbi tristique senectus et netus et malesuada
+		fames ac turpis egestas. <a href="#" data-title="Hello, i am a link">Vestibulum</a>
+		tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+		Done
+		<button type="button" data-title="Thids">dd</button>
+		c eu libero sit amet quam egestas semper. Aenean ultricies mi vitae
+		est. <a href="#" data-title="This dddd ddd is another link">Mauris
+			placerat</a> eleifend leo.
+	</p>
+
+	<label class="selection-confirm" data-title="some long tool-tip text goes here">
+		<input type="radio"
+		name="options" value="1" class="required selection-confirm">
+		Option1</label>
+</body>
+</html>

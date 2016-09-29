@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+  <script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+
+});
+</script>
+<script type="text/javascript">
+$("#datepicker").datepicker( {
+    format: "mm-yyyy",
+    startView: "months", 
+    minViewMode: "months"
+});
+ </script> 
+<style>
+.tooltip-inner {
+	color:black;
+	align:left;
+	float:left;
+	background-color: #9edfeb;
+	}
+</style>
+</head>
+<body>
+
+
+  <h3>Tooltip Example</h3>
+  <br><br>
+  
+  
+	<label data-toggle="tooltip" title="Hooray! Welcome to the Visdom Mortgage Solutions referral program.Welcome to the Visdom Mortgage Solutions referral program.">ss</label>
+
+
+	<div class="input-append date" id="datepicker" data-date="02-2012"
+		data-date-format="mm-yyyy">
+
+		<input type="text" readonly="readonly" name="date"> <span
+			class="add-on"><i class="icon-th"></i></span>
+	</div>
+
+</body>
+</html>

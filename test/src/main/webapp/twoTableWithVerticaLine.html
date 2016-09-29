@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.parentTable{
+    width: 100%;
+    border: 1px thin #b4b4b4;
+}
+.parentTable tr td{
+    padding: 0px 0px;
+}
+
+.parentTable tr td.spec{
+    width: 1px;
+    padding: 0;
+    border: none;
+    background: #b4b4b4;
+}
+.childTable{
+    width: 100%;
+}
+.childTable tr td{
+    border-bottom: 1px thin;
+}
+.childTable tr:last-child td{
+    border: none;
+}
+</style>
+</head>
+
+<body>
+<table class="parentTable">
+    <tr>
+        <td>
+            <table class="childTable">
+                <tr>
+                    <td>
+                        <p>First Name</p>
+                    </td>
+                    <td>
+                        <p>Last Name</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><p>Email</p></td>
+                    <td><p>Confirm Email</p></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+            </table>
+        </td>
+        <td class="spec"></td>
+        <td>
+            <table class="childTable">
+                <tr>
+                    <td ><p>First Name</p></td>
+                    <td><p>Last Name</p></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><p>Email</p></td>
+                    <td><p>Confirm Email</p></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

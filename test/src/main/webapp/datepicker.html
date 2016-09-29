@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="js/jquery-ui.css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<script src="js/angular.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+  
+<script type="text/javascript">
+(function () {
+    "use strict";
+    var mod = angular.module("Mod", []);
+
+    mod.controller("Ctrl", function ($scope) {
+        $scope.date = "11/12/2013";
+    });
+
+    mod.directive("datepicker", function () {
+        return {
+            restrict: "A",
+            require: "ngModel",
+            link: function (scope, elem, attrs, ngModelCtrl) {
+                var updateModel = function (dateText) {
+                    // call $apply to bring stuff to angular model
+                    scope.$apply(function () {
+                        ngModelCtrl.$setViewValue(dateText);
+                    });
+                };
+
+                var options = {
+                    dateFormat: "dd/mm/yy",
+                    // handle jquery date change
+                    onSelect: function (dateText) {
+                        updateModel(dateText);
+                    }
+                };
+
+                // jqueryfy the element
+                elem.datepicker(options);
+            }
+        }
+    });
+}());
+</script>
+</head>
+
+<body ng-app="Mod" ng-controller="Ctrl">
+    <h2>{{date}}</h2>
+    <input type="text" ng-model="date" datepicker />
+</body>
+</html>

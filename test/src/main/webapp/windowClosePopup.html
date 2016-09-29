@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script language="JavaScript">
+
+        window.onbeforeunload = function () {
+            return "Are you sure?";
+        }
+        function prevent() {
+            window.onbeforeunload = function () { };
+        };
+
+    </script>
+</head>
+
+<body>
+
+
+    <a href="demo-1" onclick="prevent()">click here</a>
+    
+
+
+
+</body>
+</html>

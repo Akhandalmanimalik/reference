@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  </head>
+  <script type="text/javascript">
+		function validateForm() {
+			alert("comming in validate");
+			
+
+			var propertyStyle = document.forms["myForm"]["propertyStyle"].value;
+			if (!propertyStyle) {
+				document.getElementById('widget_settings_44').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+
+				return false;
+			} else {
+				document.getElementById("widget_settings_44").innerHTML = "";
+			}
+			
+			var buildingType = document.forms["myForm"]["buildingType"].value;
+			if (!buildingType) {
+				document.getElementById('widget_settings_65').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+
+				return false;
+			} else {
+				document.getElementById("widget_settings_65").innerHTML = "";
+			}
+			
+			var propertyHeat = document.forms["myForm"]["propertyHeat"].value;
+			if (!propertyHeat) {
+				document.getElementById('widget_settings_58').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+
+				return false;
+			} else {
+				document.getElementById("widget_settings_58").innerHTML = "";
+			}
+			var propertyGetWater = document.forms["myForm"]["propertyGetWater"].value;
+			if (!propertyGetWater) {
+				document.getElementById('widget_settings_59').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+
+				return false;
+			} else {
+				document.getElementById("widget_settings_59").innerHTML = "";
+			}
+			
+			var propertyDisposeWater = document.forms["myForm"]["propertyDisposeWater"].value;
+			if (!propertyDisposeWater) {
+				document.getElementById('widget_settings_60').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+
+				return false;
+			} else {
+				document.getElementById("widget_settings_60").innerHTML = "";
+			}
+			var typeGarage = document.forms["myForm"]["typeGarage"].value;
+			if (!typeGarage) {
+				document.getElementById('widget_settings_61').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+
+				return false;
+			} else {
+				document.getElementById("widget_settings_61").innerHTML = "";
+			}
+			if(typeGarage == "Attached" || typeGarage == "Detached"){
+				var garageSize = document.forms["myForm"]["garageSize"].value;
+				if (!garageSize) {
+					document.getElementById('widget_settings_64').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+
+					return false;
+				} else {
+					document.getElementById("widget_settings_64").innerHTML = "";
+				}
+			}
+			
+			var additionalBuilding = document.forms["myForm"]["additionalBuilding"].value;
+			if (!additionalBuilding) {
+				document.getElementById('widget_settings_62').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+
+				return false;
+			} else {
+				document.getElementById("widget_settings_62").innerHTML = "";
+			}
+			
+			var squareFt = document.forms["myForm"]["squareFt"].value;
+			if (!squareFt) {
+				document.getElementById('input_24').innerHTML = "<span style='color:red'>*This field is Required.</span>";
+
+				return false;
+			} else {
+				document.getElementById("input_24").innerHTML = "";
+			}
+			
+		}
+	</script>
+<body>
+<div ng-app="demoApp">
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+			

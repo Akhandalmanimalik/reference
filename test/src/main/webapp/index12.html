@@ -1,0 +1,35 @@
+<!doctype html>
+<html ng-app="ui.bootstrap.demo">
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.0.3.js"></script>
+    <script src="example.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+<div ng-controller="ButtonsCtrl">
+    <h4>Checkbox</h4>
+    <pre>Model: {{checkModel}}</pre>
+    <pre>Results: {{checkResults}}</pre>
+    <div class="btn-group">
+        <label class="btn btn-primary" ng-model="checkModel.Employed" uib-btn-checkbox>Employed</label>
+        <label class="btn btn-primary" ng-model="checkModel.Self_Employed" uib-btn-checkbox>Self-Employed</label>
+        <label class="btn btn-primary" ng-model="checkModel.Pension" uib-btn-checkbox>Pension</label>
+        <label class="btn btn-primary" ng-model="checkModel.Investments" uib-btn-checkbox>Investments</label>
+        <label class="btn btn-primary" ng-model="checkModel.Maternity" uib-btn-checkbox>Maternity</label>
+        <br>
+        <br>
+        <label class="btn btn-primary" ng-model="checkModel.VehicleAllow" uib-btn-checkbox>VehicleAllow</label>
+        <label class="btn btn-primary" ng-model="checkModel.LivingAllow" uib-btn-checkbox>LivingAllow</label>
+        <label class="btn btn-primary" ng-model="checkModel.Commission" uib-btn-checkbox>Commission</label>
+        <label class="btn btn-primary" ng-model="checkModel.Bonus" uib-btn-checkbox>Bonus</label>
+        <label class="btn btn-primary" ng-model="checkModel.Other" uib-btn-checkbox>Other</label>
+        
+    </div>
+    <div>
+    </div>
+</div>
+  </body>
+</html>

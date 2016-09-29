@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<body>
+
+<div ng-app="" ng-init="person={firstNum:39,secNum:3}">
+
+
+<p>The name is {{ person.firstNum+ person.secNum }}</p>
+<input type="number" name="firstName" ng-model="firstNum"/>
+<input type="number" name="secNum" ng-model="secNum"/>
+<input type="number" name="firstName" ng-model="secNum" value="person.firstNum"/>
+<p>The name is {{ person.firstNum+ person.secNum }}</p>
+</div>
+
+</body>
+</html>

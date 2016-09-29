@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+document.myForm.from1.onchange = calc;
+
+function calc(){
+var today = new Date();
+var datev = document.forms["myForm"]["datev"].value;
+var givenDate = document.forms["myForm"]["datev"].value.split("/");
+var datevDate=new Date(datev);
+/* alert(today.getFullYear()+" - "+datevDate.getFullYear())
+alert(today.getFullYear() - datevDate.getFullYear()); */
+
+/* alert((today.getFullYear()-datevDate.getFullYear())/(1000*60*60*24));
+alert(Math.round((today.getFullYear()-datevDate.getFullYear())/(1000*60*60*24))); */
+
+var months;
+months=(today.getFullYear() - datevDate.getFullYear())*12;
+/* alert(months); */
+months-=today.getMonth()+1;
+months+=datevDate.getMonth();
+
+
+document.myForm.targets.value = months;
+/* return true; */
+}
+</script>
+</head>
+<body>
+<form name="myForm" action="/ss" onsubmit="return calc();">
+<input type="text" name="datev" id="from1" onblur="return calc();">
+
+<input type="text" name="names" id="targets" value="">
+<button type="submit">sss
+</button>
+</form>
+</body>
+</html>

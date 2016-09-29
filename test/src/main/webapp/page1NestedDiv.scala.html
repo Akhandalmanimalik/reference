@@ -1,0 +1,600 @@
+@(uniid: String)
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta https-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Mortgage Refinance Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="shortcut icon" href="@routes.Assets.at("_resources/favicon.ico")">
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js
+"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+ -->
+   <script src="@routes.Assets.at("_resources/jquery-2.1.4.min.js")"></script>
+    <script src="@routes.Assets.at("_resources/jquery.geocomplete.js")"></script>
+    <style type="text/css">
+	.verticalLine {
+	height: 190px;
+    border-left: medium groove #336699;
+	}
+	.inline{
+	display: inline;
+	}
+</style>
+<script type="text/javascript">
+	function validateForm(){
+	
+	var currentAddress1 = document.forms["myForm"]["currentAddress1"].value;
+		if(!currentAddress1){
+		        document.getElementById('input_2001').innerHTML="<span style='color:red'>*This field is Required.</span>";
+		        return false;
+		}else{
+    	document.getElementById("input_2001").innerHTML="";
+    	}
+		
+		var movedIn1 = document.forms["myForm"]["movedIn1"].value;
+		if(!movedIn1){
+		        document.getElementById('input_2002').innerHTML="<span style='color:red'>*This field is Required.</span>";
+		        return false;
+		}else{
+    	document.getElementById("input_2002").innerHTML="";
+    	}
+		
+		var currentAddress2 = document.forms["myForm"]["currentAddress2"].value;
+		if(!currentAddress2){
+		        document.getElementById('input_2003').innerHTML="<span style='color:red'>*This field is Required.</span>";
+		        return false;
+		}else{
+    	document.getElementById("input_2003").innerHTML="";
+    	}
+		
+		var movedIn2 = document.forms["myForm"]["movedIn2"].value;
+		if(!movedIn2){
+		        document.getElementById('input_2004').innerHTML="<span style='color:red'>*This field is Required.</span>";
+		        return false;
+		}else{
+    	document.getElementById("input_2004").innerHTML="";
+    	}
+		
+		var currentAddress3 = document.forms["myForm"]["currentAddress3"].value;	
+		if(!currentAddress3){
+	    	    document.getElementById('input_2005').innerHTML="<span style='color:red'>*This field is Required.</span>";
+		        return false;
+		}else{
+		document.getElementById("input_2005").innerHTML="";
+		}
+	
+		var movedIn3 = document.forms["myForm"]["movedIn3"].value;
+		if(!movedIn3){
+	    	    document.getElementById('input_2006').innerHTML="<span style='color:red'>*This field is Required.</span>";
+	        	return false;
+		}else{
+		document.getElementById("input_2006").innerHTML="";
+		}
+	
+		/* var adConfirmEmail = document.forms["myForm"]["adConfirmEmail"].value; */
+		var dummy=1;
+		if(dummy==1){
+			var CoCurrentAddress1 = document.forms["myForm"]["CoCurrentAddress1"].value;
+			if(!CoCurrentAddress1){
+		    	    document.getElementById('input_2021').innerHTML="<span style='color:red'>*This field is Required.</span>";
+		        	return false;
+			}else{
+			document.getElementById("input_2021").innerHTML="";
+			}
+			
+			var CoMovedIn1 = document.forms["myForm"]["CoMovedIn1"].value;
+			if(!CoMovedIn1){
+		    	    document.getElementById('input_2022').innerHTML="<span style='color:red'>*This field is Required.</span>";
+		        	return false;
+			}else{
+			document.getElementById("input_2022").innerHTML="";
+			}
+			
+			var CoCurrentAddress2 = document.forms["myForm"]["CoCurrentAddress2"].value;
+			if(!CoCurrentAddress2){
+		    	    document.getElementById('input_2023').innerHTML="<span style='color:red'>*This field is Required.</span>";
+		        	return false;
+			}else{
+			document.getElementById("input_2023").innerHTML="";
+			}
+			
+			var CoMovedIn2 = document.forms["myForm"]["CoMovedIn2"].value;
+			if(!CoMovedIn2){
+		    	    document.getElementById('input_2024').innerHTML="<span style='color:red'>*This field is Required.</span>";
+		        	return false;
+			}else{
+			document.getElementById("input_2024").innerHTML="";
+			}
+			
+			var CoCurrentAddress4 = document.forms["myForm"]["CoCurrentAddress4"].value;
+			if(!CoCurrentAddress4){
+		    	    document.getElementById('input_2025').innerHTML="<span style='color:red'>*This field is Required.</span>";
+		        	return false;
+			}else{
+			document.getElementById("input_2025").innerHTML="";
+			}
+			
+			var CoMovedIn3 = document.forms["myForm"]["CoMovedIn3"].value;
+			if(!CoMovedIn3){
+		    	    document.getElementById('input_2026').innerHTML="<span style='color:red'>*This field is Required.</span>";
+		        	return false;
+			}else{
+			document.getElementById("input_2026").innerHTML="";
+			}
+		}
+		
+		return true;	
+	}
+</script>
+
+<script>
+      $(function(){
+        $("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });
+      });
+    </script>
+    <script>
+      $(function(){
+        $("#geocomplete1").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete1").trigger("geocode");
+        });
+      });
+    </script>
+    <script>
+      $(function(){
+        $("#geocomplete2").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete2").trigger("geocode");
+        });
+      });
+    </script>
+    
+        <script>
+      $(function(){
+        $("#geocomplete3").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete3").trigger("geocode");
+        });
+      });
+    </script>
+    <script>
+      $(function(){
+        $("#geocomplete4").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete4").trigger("geocode");
+        });
+      });
+    </script>
+    <script>
+      $(function(){
+        $("#geocomplete5").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete5").trigger("geocode");
+        });
+      });
+    </script>
+
+<!-- <script src="_resources/jquery.maskedinput.min.js" type="text/javascript"></script>
+ -->  
+ <link rel="stylesheet" href="_resources/bootstrap.min.css">
+ <link rel="stylesheet" href="@routes.Assets.at("_resources/bootstrap.min.css")">
+<script src=@routes.Assets.at("_resources/bootstrap.min.js")"></script>  
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/background.css")">
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/forms.css")">
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("_resources/template.css")">
+</head>
+<body>
+<br>
+<br>
+<div style="width: 97%;">
+			
+		<form name="myForm" action="mortgageForm6" method="POST" onsubmit="return validateForm()">
+		<input type="hidden" value="@uniid" name="uniid">
+		<div class="row"></div>
+		<div class="row">
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8 container-bg text-color-blue">
+			
+		<div align="left" style="padding-bottom: 1px; margin-top: 20px; padding-left: 1%">
+			<img alt="Visdom Logo" height="65" width="210"
+				src="@routes.Assets.at("_resources/visdom-logo.png")" />
+		</div>
+		<div style="padding-top: 30px"></div>
+		<div data-ng-app="demoApp"  style="margin-left: 4%">
+		<div ng-controller="DemoController" ng-init="isDisabled = false" >
+		
+		<div class="row" class="col-sm-16" style="padding-left: 0%;">
+			<div class="col-sm-6" style="padding-left: 0%;">
+				<label class="labelfont" style="padding-left: 30%">Applicant</label><br><br>
+				<div class="row">
+					  	<div class="col-md-6"><label class="labelfont">First Name<span style="color: red; font-size: 3">*</span></label><br></div>
+					  	<div class="col-md-6" style="padding-left: 0%;" ><label class="labelfont">Last Name<span style="color: red; font-size: 3">*</span></label></div>
+				</div>
+				
+				<div class="col-sm-6" style="padding-left: 0%;">
+				<div class="map_canvas"></div>
+				<input type="text" id="geocomplete" placeholder="First Name" class="form-control" name="currentAddress1" style="width: 100%">
+				<div id="input_2001" style="position: absolute;"> </div>
+				</div>
+				<div class="col-sm-6" style="padding-left: 0%;">
+				<input type="text"  name="movedIn1" ng-model="movedIn1" placeholder="Last Name" class="form-control" ng-blur="calculateDate(this)" style="width: 100%">
+				<div id="input_2002" style="position: absolute;"> </div>
+				</div><br><br>
+				
+					<div class="col-sm-6" style="padding-left: 0%; width: 100%">
+					<div class="row">
+					  	<div class="col-md-6"><label class="labelfont">Email<span style="color: red; font-size: 3">*</span></label></div>
+					  	<div class="col-md-6" style="padding-left: 0%;" ><label class="labelfont">Confirm Email<span style="color: red; font-size: 3">*</span></label></div>
+					</div>
+					<div class="col-sm-6" style="padding-left: 0%;">
+					<div class="map_canvas"></div>
+					<input type="text" id="geocomplete1" placeholder="Email" class="form-control" name="currentAddress2" style="width: 103%">
+					<div id="input_2003" style="position: absolute;"> </div>
+					</div>
+					<div class="col-sm-6" style="padding-left: 1%;">
+					<input type="text"  name="movedIn2" ng-model="movedIn2" placeholder="Confirm Email" class="form-control" ng-blur="calculateDate(this)" style="width: 112%">
+					<div id="input_2004" style="position: absolute;"> </div>
+					</div>
+					</div>
+				
+			</div>
+			<!-- <div ng-if="additionalApplicant == 'yes'"> -->
+			<div ng-if="additionalApplicant == 'yes'">
+			<div class="clearfix visible-xs"></div>
+			<div class="col-sm-1 verticalLine" style="margin-left:-20px; width: 0%; padding-right: 0px;"></div>
+			<div class="col-sm-6" style="padding-left: 0%;">
+				<label class="labelfont" style="padding-left: 30%">Co Applicant</label><br><br>
+				<div class="row">
+					  		<div class="col-md-6"><label class="labelfont">First Name<span style="color: red; font-size: 3">*</span></label></div>
+					  		<div class="col-md-6" style="padding-left: 0%;" ><label class="labelfont">Last Name<span style="color: red; font-size: 3">*</span></label></div>
+				</div>
+				<div class="col-sm-6" style="padding-left: 0%;">
+				<div class="map_canvas"></div>
+				<input type="text" id="geocomplete3" class="form-control" placeholder="First Name" name="CoCurrentAddress1" style="width: 100%">
+				<div id="input_2021" style="position: absolute;"> </div>
+				</div>
+				<div class="col-sm-6" style="padding-left: 0%;">
+				<input type="text" name="CoMovedIn1" ng-model="CoMovedIn1" placeholder="Last Name" class="form-control" ng-blur="calculateDate2(this)" style="width: 100%">
+				<div id="input_2022" style="position: absolute;"> </div>
+				</div><br><br>
+				
+				<div class="col-sm-6" style="padding-left: 0%;  width: 100%">
+				<div class="row">
+					  		<div class="col-md-6"><label class="labelfont">Email<span style="color: red; font-size: 3">*</span></label></div>
+					  		<div class="col-md-6" style="padding-left: 0%;"><label class="labelfont">Confirm Email<span style="color: red; font-size: 3">*</span></label></div>
+				</div>
+				<div class="col-sm-6" style="padding-left: 0%;">
+				<div class="map_canvas"></div>
+				<input type="text" id="geocomplete4" placeholder="Email" class="form-control" name="CoCurrentAddress2" style="width: 107%">
+				<div id="input_2023" style="position: absolute;"> </div>
+				</div>
+				<div class="col-sm-6" style="padding-left: 2%;">
+				<input type="text"  name="CoMovedIn2" ng-model="CoMovedIn2" placeholder="Confirm Email" class="form-control" ng-blur="calculateDate2(this)" style="width: 112%">
+				<div id="input_2024" style="position: absolute;"> </div>
+				</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<label class="labelfont"> Is there an Additional Applicant?<span style="color: red; font-size: 3">*</span></label><br>
+						<div class="btn-group" style="width: 100%;">
+							<label style="width: 20%;" class="btn btn-primary"
+								btn-radio="'yes'" ng-change="change()" ng-model="additionalApplicant">
+								Yes </label> <label style="width: 20%; border-radius: 0px 5px 5px 0px;" class="btn btn-primary"
+								btn-radio="'no'" ng-change="change()" ng-model="additionalApplicant">
+								No </label> <br> <br>
+								<div id="input_1109" style="position: absolute;"></div>
+						</div>
+						<br><br>
+						<input type="hidden" name="additionalApplicants"
+						value="{{additionalApplicant}}" ng-required>
+						<label class="labelfont"> What is your current Lending Goal? <span style="color: red; font-size: 3">*</span></label><br>
+		   				<div class="btn-group" style="width: 100%;">
+             				<label style="width: 20%" class="btn btn-primary" btn-radio="'PreApproval'"
+                      			ng-change="change()"  ng-model="newItemType" value=""> Pre-Approval </label>
+                            
+             				<label style="width: 20%" class="btn btn-primary" btn-radio="'Purchase'" 
+                                ng-change="change()"  ng-model="newItemType" value=""> Purchase </label>
+				             <label style="width: 20%; border-radius: 0px 5px 5px 0px;" class="btn btn-primary" btn-radio="'Refinance'"
+                                ng-change="change()"  ng-model="newItemType" value=""> Refinance </label>
+							<div id="input_201"> </div>
+						</div>
+						<input type="hidden" name="term" value="{{newItemType}}" ></input>
+</div>
+<br>
+	        		<div>
+						<div style="float: right;padding-right:30px;">
+							<input type="submit" class="btn btn-primary btn-block"
+								value="Next" style=" width: 110px">
+
+							<div align="right" id="submiterror">
+								<font color="red"></font>
+							</div>
+						</div>
+						<div style="float: left;padding-left:0px;">
+							<input type="button" class="btn btn-primary btn-block"
+								value="Back" style=" width: 110px;">
+						</div>
+					</div>
+					<br>
+		</div>
+						<br>
+						<div class="container" style="width: 70%;">
+						  <div class="progress">
+						    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:15%">
+						    </div>
+						  </div>
+						</div>
+					 </div>
+					
+				</div>
+				</div>
+				<br>
+				<br>
+</form>
+</div>
+<script type="text/javascript">
+    $(function() {
+        $.mask.definitions['~'] = "[+-]";
+
+        $("#phonedatata").mask("999-999-9999");
+    });
+	
+</script>
+
+ <script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+ 
+    <script src="jquery.geocomplete.js"></script>
+    <script>
+      $(function(){
+        $("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });
+      });
+    </script>
+<script>
+      $(function(){
+        $("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });
+      });
+    </script>
+    <script>
+      $(function(){
+        $("#geocomplete1").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete1").trigger("geocode");
+        });
+      });
+    </script>
+    <script>
+      $(function(){
+        $("#geocomplete2").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete2").trigger("geocode");
+        });
+      });
+    </script>
+    <script>
+      $(function(){
+        $("#geocomplete3").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete3").trigger("geocode");
+        });
+      });
+    </script>
+    <script>
+      $(function(){
+        $("#geocomplete4").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete4").trigger("geocode");
+        });
+      });
+    </script>
+    <script>
+      $(function(){
+        $("#geocomplete5").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete5").trigger("geocode");
+        });
+      });
+    </script>
+
+          <script type="text/javascript">
+    var app = angular.module("demoApp", ['ui.bootstrap']);
+
+    app.controller('DemoController', function ($scope) {
+        init();
+        function init() {
+            $scope.newItemType = '';
+            $scope.company="";
+            $scope.change = function () {
+                console.log($scope.newItemType)
+            };
+        }
+        
+        $scope.calculateDate = function ($scope) {
+        	$scope.employetotal=0;
+        	var one= $scope.movedIn1;
+        	var date =one.split("/");
+            var oneDate=date[0]+"/1/"+date[2];
+            var total=0;
+            
+            var today = new Date();
+    		var datevDate=new Date(oneDate);
+    		
+    		var one_day=1000*60*60*24;
+    		var date1ms=today.getTime();
+    		var date2ms=datevDate.getTime();
+    		
+    		var totmili=date1ms-date2ms;
+    		var totalDays=Math.round(totmili/one_day);
+    		var totalMonths=Math.abs((totmili/one_day)/30);
+    		
+    		total=Math.floor(totalMonths); 
+    		
+    		$scope.applicantTotal1 = total;
+             		
+    		
+    		if(total <36){
+    			one= $scope.movedIn2;
+    			date =one.split("/");
+                oneDate=date[0]+"/1/"+date[2];
+        	   	datevDate=new Date(oneDate);
+        	   	
+       		 	one_day=1000*60*60*24;
+       		 	date1ms=date2ms;
+       		
+       			date2ms=datevDate.getTime();
+       			totmili=date1ms-date2ms;
+       			if(isNaN(totmili) == false){
+       				 
+              		totalDays=Math.round(totmili/one_day);
+              		totalMonths=Math.abs((totmili/one_day)/30);
+            		total=total+Math.floor(totalMonths); 
+            		$scope.applicantTotal2 = total;
+    			
+    		}
+       			
+    		}
+    		/* document.getElementById("applicantTotal2").value=total; */
+        }
+        
+        $scope.calculateDate2 = function ($scope) {
+        	$scope.employetotal=0;
+        	var one= $scope.CoMovedIn1;
+    
+        	var date =one.split("/");
+            var oneDate=date[0]+"/1/"+date[2];
+            var total=0;
+            var today = new Date();
+    		var datevDate=new Date(oneDate);
+    		
+    		var one_day=1000*60*60*24;
+    		var date1ms=today.getTime();
+    		var date2ms=datevDate.getTime();
+    		
+    		var totmili=date1ms-date2ms;
+    		var totalDays=Math.round(totmili/one_day);
+    		var totalMonths=Math.abs((totmili/one_day)/30);
+    		
+    		total=Math.floor(totalMonths); 
+    		$scope.coApplicantTotal = total;
+    		
+    		if(total <36){
+    			one= $scope.CoMovedIn2;
+    			date =one.split("/");
+                oneDate=date[0]+"/1/"+date[2];
+        	   	datevDate=new Date(oneDate);
+        	   	
+       		 	one_day=1000*60*60*24;
+       		 	date1ms=date2ms;
+       		
+       			date2ms=datevDate.getTime();
+       			totmili=date1ms-date2ms;
+       			if(isNaN(totmili) == false){
+       				 
+              		totalDays=Math.round(totmili/one_day);
+              		totalMonths=Math.abs((totmili/one_day)/30);
+            		total=total+Math.floor(totalMonths); 
+            		$scope.coApplicantTotal2 = total;
+    			
+    		}
+       			
+    		}
+        }             		
+    });
+    </script>
+<script src="@routes.Assets.at("_resources/jquery.maskedinput.min.js")" type="text/javascript"></script>
+</body>
+</html>
+
+
+
+
+
+ 
