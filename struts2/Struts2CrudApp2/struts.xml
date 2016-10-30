@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+   <include file="struts-default.xml"/>
+
+    <package name="default" extends="struts-default">
+
+        <action name="getAllEmployees" method="getAllEmployees" class="net.reumann.struts2demo.action.EmployeeAction">
+            <result name="success">/resources/employees.jsp</result>
+        </action>
+        
+        <action name="setUpForInsertOrUpdate" method="setUpForInsertOrUpdate" class="net.reumann.struts2demo.action.EmployeeAction">
+            <result name="success">/resources/employeeForm.jsp</result>
+        </action>
+
+        <action name="insertOrUpdate" method="insertOrUpdate" class="net.reumann.struts2demo.action.EmployeeAction">
+            <result name="success" type="redirect-action" >getAllEmployees</result>
+            <result name="input">/resources/employeeForm.jsp</result>
+        </action>
+        </action-mappings>
+
+        <action name="delete" method="deleteEmployee" class="net.reumann.struts2demo.action.EmployeeAction">
+            <result name="success" type="redirect-action" >getAllEmployees</result>
+        </action>
+    </package>   
+</struts>

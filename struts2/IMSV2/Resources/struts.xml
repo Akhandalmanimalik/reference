@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+
+	<package name="default" extends="struts-default" namespace="/">
+		<action name="login" class="com.bizruntime.action.LoginAction"
+			method="checkUser">
+			<result name="success">userhome.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+		<action name="addemployee" class="com.bizruntime.action.LoginAction"
+			method="addEmployee">
+			<result name="success">useraddedsuccess.jsp</result>
+			<result name="error">add_student.jsp</result>
+		</action>
+		<action name="addcourse" class="com.bizruntime.action.LoginAction"
+			method="addCourse">
+			<result name="success">courseaddedsuccess.jsp</result>
+			<result name="error">addcoursepage.jsp</result>
+		</action>
+		
+		<action name="enrollstudent" class="com.bizruntime.action.LoginAction"
+			method="enrollStudent">
+			<result name="success">studentenrollsuccess.jsp</result>
+			<result name="error">enrollstudentpage.jsp</result>
+		</action>
+
+		<!-- For linking one page to another page. -->
+		<action name="addcoursepage">
+			<result>/addcoursepage.jsp</result>
+		</action>
+
+		<action name="listcoursepage">
+			<result>/listcoursepage.jsp</result>
+		</action>
+
+		<action name="enrollstudentpage">
+			<result>/enrollstudentpage.jsp</result>
+		</action>
+		<action name="userhomepage">
+			<result>/userhome.jsp</result>
+		</action>
+		<action name="loginpage">
+			<result>/login.jsp</result>
+		</action>
+	</package>
+</struts>

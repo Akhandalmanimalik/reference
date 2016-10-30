@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<struts-config>
+	<!-- Bean configuration -->
+	<form-beans>
+		<form-bean name="helloform" type="com.bizruntime.bean.HelloFormBackup" />
+	</form-beans>
+	<!-- Mapping -->
+	<action-mappings>
+		<action path="/hello" name="helloform" input="/index.jsp"
+			type="com.bizruntime.controller.HelloController">
+			<forward name="success" path="/success.jsp" />
+		</action>
+	</action-mappings>
+	<!-- property file mapping -->
+	<message-resources parameter="com/bizruntime/propfile/Messages" />
+</struts-config>

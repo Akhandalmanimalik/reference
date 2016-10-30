@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<struts-config>
+	<!-- Bean configuration -->
+	<form-beans>
+		<form-bean name="student" type="com.bizruntime.bean.StudentFormBean" />
+	</form-beans>
+	<!-- Mapping -->
+	<action-mappings>
+		<action path="/regForm" name="student" validate="true" input="/index.jsp" />
+	</action-mappings>
+	<!-- property file mapping -->
+	<message-resources parameter="com.bizruntime.resources/Messages" />
+</struts-config>
